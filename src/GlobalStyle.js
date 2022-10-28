@@ -44,6 +44,7 @@ ol, ul {list-style:none}
 blockquote, q {quotes:none}
 blockquote:after, blockquote:before, q:after, q:before {content:"";content:none}
 table {border-collapse:collapse;border-spacing:0}
+a{text-decoration:none}
 
 `;
 
