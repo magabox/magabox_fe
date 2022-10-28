@@ -1,17 +1,18 @@
 import styled, { css } from "styled-components";
 
-const Button = ({ children, ...props }) => {
-	return <ButtonStyle {...props}>{children}</ButtonStyle>;
+const Input = ({ children, ...props }) => {
+	return <InputStyle {...props}>{children}</InputStyle>;
 };
 
-const ButtonStyle = styled.button`
+const InputStyle = styled.input`
 	background-color: ${({ bgc }) => (bgc ? bgc : "")};
 	width: ${({ width }) => (width ? width : "")};
 	height: ${({ height }) => (height ? height : "")};
 	padding: ${({ pd }) => (pd ? pd : "")};
-	border: none;
-	cursor: pointer;
-
+	border: 1px solid #d8d9d8;
+	:hover {
+		border: 1px solid #666;
+	}
 	${({ theme }) => {
 		switch (theme) {
 			case "login":
@@ -29,12 +30,4 @@ const ButtonStyle = styled.button`
 		}
 	}};
 `;
-export default Button;
-
-/** 사용방법 입니다    
- * <Button
-            width={"580px"}
-            height={"50px"}
-            pd={"15px"}
-          ></Button>
- */
+export default Input;
