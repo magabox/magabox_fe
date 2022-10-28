@@ -8,6 +8,7 @@ export const StMainContainer = styled.div`
     background-color: #222;
     overflow: hidden;
     z-index: 2;
+    width:100%;
 
 `;
 
@@ -18,19 +19,15 @@ export const StMainBackGround = styled.div`
     top : 0;
     min-height: 880px;
     height: 921px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: #211b1bcc;
     z-index: 3;
 `;
 
 export const StBackGroundImg = styled.img`
   display:block;
-  top : 0;
   src : ${(props)=> props.src};
   width : 100%;
   filter : blur(15px);
-  position : absolute;
-  height : 921px;
-  object-fit: cover;
 `;
 
 
