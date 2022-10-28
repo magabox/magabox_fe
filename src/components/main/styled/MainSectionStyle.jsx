@@ -19,7 +19,7 @@ export const StMainBackGround = styled.div`
     top : 0;
     min-height: 880px;
     height: 921px;
-    background-color: #211b1bcc;
+    background-color: #000000da;
     z-index: 3;
 `;
 
