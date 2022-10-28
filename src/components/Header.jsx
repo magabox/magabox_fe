@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Login from "../components/Sign/Login";
+import styled from "styled-components";
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -21,3 +22,9 @@ const Header = () => {
 };
 
 export default Header;
+
+export const StHeaderBox = styled.div`
+	width: 100%;
+	height : 91px;
+	background-color: #444444;
+`;

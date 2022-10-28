@@ -1,3 +1,4 @@
+
 import styled, { css } from "styled-components";
 
 const Button = ({ children, ...props }) => {
@@ -24,6 +25,18 @@ const ButtonStyle = styled.button`
 					width: 300px;
 					height: 35px;
 				`;
+      case "like":
+        return css`
+          width: 80px;
+          height: 36px;
+          border : 2px solid #555;
+          background-color: black;
+          color : white;
+          border-radius : 4px;
+          box-sizing : border-box;
+          font-weight: 400;
+        
+        `;
 			default:
 				break;
 		}
