@@ -11,10 +11,10 @@ const Router = () => {
 				<Routes>
 					<Route path="/" element={<Header />}>
 						<Route path="" element={<Main />} />
-						<Route path="join" element={<Join />} />
 						<Route path="detail" element={<Detail />} />
 						<Route path="movieadmin" element={<MovieAdmin />} />
 					</Route>
+					<Route path="/join" element={<Join />} />
 				</Routes>
 			</BrowserRouter>
 		</>

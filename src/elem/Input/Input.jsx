@@ -9,6 +9,7 @@ const InputStyle = styled.input`
 	width: ${({ width }) => (width ? width : "")};
 	height: ${({ height }) => (height ? height : "")};
 	padding: ${({ pd }) => (pd ? pd : "")};
+	margin: ${({ mg }) => (mg ? mg : "")};
 	border: 1px solid #d8d9d8;
 	:hover {
 		border: 1px solid #666;
