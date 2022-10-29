@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import Header from "../../components/Sign/Header/Header";
 import styled from "styled-components";
 import StMainContainer from "../../components/main/styled/MainSectionStyle";
 import StMainSection from "../../components/main/mainContainer/MainSection";

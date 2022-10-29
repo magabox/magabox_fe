@@ -21,7 +21,6 @@ const MovieAdmin = () => {
 	};
 	const onClickHandler = e => {
 		e.preventDefault();
-
 		const accessToken = localStorage.getItem("accessToken");
 		const refreshToken = localStorage.getItem("refreshToken");
 
