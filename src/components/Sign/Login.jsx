@@ -9,7 +9,6 @@ import { __loginDB } from "../../redux/modules/user/login";
 import { Link } from "react-router-dom";
 
 const Login = ({ close }) => {
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [idInput, setIdInput] = useState();
 	const [pwInput, setPwInput] = useState();
