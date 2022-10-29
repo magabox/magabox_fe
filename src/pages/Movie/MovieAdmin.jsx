@@ -27,7 +27,7 @@ const MovieAdmin = () => {
 		const formData = new FormData();
 
 		// 이걸 합친게 바로 위 코드임
-		formData.append("image", imageToUpload);
+		formData.append("file", imageToUpload);
 		formData.append("title", data.title);
 		formData.append("desc", data.desc);
 		formData.append("runtime", data.runtime);
