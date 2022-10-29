@@ -5,7 +5,7 @@ export const StMainContainer = styled.div`
     position: relative;
     height: 921px;
     min-height: 880px;
-    background-color: #222;
+    background-color: #222222ff;
     overflow: hidden;
     z-index: 2;
     width:100%;
@@ -19,7 +19,7 @@ export const StMainBackGround = styled.div`
     top : 0;
     min-height: 880px;
     height: 921px;
-    background-color: #000000da;
+    background-color: #000000dc;
     z-index: 3;
 `;
 
