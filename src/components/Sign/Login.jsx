@@ -1,9 +1,29 @@
 import React from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Input from "../../elem/Input/Input";
 import { Link } from "react-router-dom";
 
 const Login = ({ close }) => {
+	const body = document.querySelector("body");
+	const scrollPosition = window.pageYOffset;
+
+	useEffect(() => {
+		body.style.overflow = "hidden";
+		body.style.position = "fixed";
+		body.style.top = `-${scrollPosition}px`;
+		body.style.left = "0";
+		body.style.right = "0";
+		return () => {
+			body.style.removeProperty("overflow");
+			body.style.removeProperty("position");
+			body.style.removeProperty("top");
+			body.style.removeProperty("left");
+			body.style.removeProperty("right");
+			window.scrollTo(0, scrollPosition);
+		};
+	}, []);
+
 	return (
 		<>
 			<LoginBg>
@@ -67,6 +87,7 @@ const LoginBg = styled.section`
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	z-index: 999;
 `;
 
 const LoginWrap = styled.article`
@@ -126,7 +147,7 @@ const LoginColLeft = styled.div`
 		width: 70%;
 		margin: 0 auto;
 		border-top: 1px solid #e0e0e0;
-		padding: 20px 0 30px;
+		padding: 30px 0 30px;
 	}
 `;
 
