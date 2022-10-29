@@ -23,7 +23,7 @@ const MovieAdmin = () => {
 		e.preventDefault();
 
 		const accessToken = localStorage.getItem("accessToken");
-		// const refreshToken = localStorage.getItem("refreshToken");
+		const refreshToken = localStorage.getItem("refreshToken");
 
 		const formData = new FormData();
 
@@ -42,7 +42,7 @@ const MovieAdmin = () => {
 			.post(`${serverUrl}/movies`, formData, {
 				headers: {
 					Authorization: accessToken,
-					// "Refresh-Token": refreshToken,
+					"Refresh-Token": refreshToken,
 					"Content-Type": "multipart/form-data",
 				},
 			})
