@@ -45,17 +45,15 @@ const loginSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		// [__loginDB.fulfilled]: (state, action) => {
-		// 	console.log("pay", action.payload);
-		// 	state.isLogin = true;
-		// 	localStorage.setItem("authorization", action.payload.authorization);
-		// 	// localStorage.setItem("refreshToken", response.headers.refreshtoken);
-		// 	localStorage.setItem("isLogin", true);
-		// },
-		// [__loginDB.rejected]: (state, action) => {
-		// 	state.isLogin = false;
-		// 	state.error = action.payload;
-		// },
+		[__loginDB.fulfilled]: (state, action) => {
+			console.log("pay", action.payload);
+			state.isLogin = true;
+			localStorage.setItem("isLogin", true);
+		},
+		[__loginDB.rejected]: (state, action) => {
+			state.isLogin = false;
+			state.error = action.payload;
+		},
 	},
 });
 
