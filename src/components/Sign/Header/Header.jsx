@@ -1,7 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Login from "../Login";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bars from "../../../UseImg/megabox_img/megabox021.png";
 import search from "../../../UseImg/megabox_img/megabox022.png";
@@ -36,6 +38,8 @@ import {
 	StTheater,
 } from "../styled/HeaderStyled";
 import useMenu from "./hooks/useMenu";
+import Logout from "../Logout";
+import { loginAction } from "../../../redux/modules/user/login";
 import UL from "../../../elem/UL/UL";
 import LI from "../../../elem/LI/LI";
 import StUL from "../../../elem/UL/UL";
@@ -52,18 +56,34 @@ const Header = () => {
 	const theaterHover = useMenu();
 	const eventHover = useMenu();
 	const beneHover = useMenu();
+	const dispatch = useDispatch();
+	const isLogin = useSelector(state => state.login.isLogin);
+	const { handleLoginDispatch } = loginAction;
+	const [ready, setReady] = useState(undefined);
 
 	const openModalHandler = () => {
 		setIsOpen(!isOpen);
 	};
 
-	console.log("무비호버", movieHover);
-	console.log("예매호버", reservHover);
-	console.log("극장호버", theaterHover);
+	// console.log("무비호버", movieHover);
+	// console.log("예매호버", reservHover);
+	// console.log("극장호버", theaterHover);
 	const onchangeBox = () => {
 		setIsBox(!isBox);
 	};
+	const sample = () => {
+		const loggedin = localStorage.getItem("isLogin");
+		if (loggedin) {
+			dispatch(handleLoginDispatch());
+		}
 
+		setReady("yes");
+	};
+
+	useEffect(() => {
+		sample();
+	}, [isLogin]);
+	const userRole = localStorage.getItem("user-role");
 	return (
 		<>
 			<StHeaderBox>
@@ -75,8 +95,22 @@ const Header = () => {
 							<span>고객센터</span>
 						</StUpLeftBox>
 						<StUpRightBox>
-							<span onClick={openModalHandler}>로그인</span>
-							<span>회원가입</span>
+							{isLogin ? (
+								<>
+									{userRole === "ROLE_ADMIN" ? (
+										<Link to="/movieadmin">
+											<span>등록</span>{" "}
+										</Link>
+									) : null}
+									<Logout />
+								</>
+							) : (
+								<span onClick={openModalHandler}>로그인</span>
+							)}
+
+							<Link to="/join">
+								<span>회원가입</span>
+							</Link>
 							<span>빠른예매</span>
 						</StUpRightBox>
 					</StUpBox>
@@ -160,7 +194,9 @@ const Header = () => {
 							<StMy src={my} />
 						</StDownRightBox>
 					</StDownBox>
-					<StLogo src={logo} />
+					<Link to="/">
+						<StLogo src={logo} />
+					</Link>
 				</StHeaderContentBox>
 				<StNavBox>
 					{isBox ? <StMovieNav onMouseLeave={onchangeBox}></StMovieNav> : null}

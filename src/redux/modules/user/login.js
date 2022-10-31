@@ -13,17 +13,19 @@ export const __loginDB = createAsyncThunk(
 			);
 			const accessToken = response.headers.authorization;
 			const refreshToken = response.headers["refresh-token"];
+			const userRole = response.headers["user-role"];
 			// console.log("res", response);
 			if (response.status === 200 || response.status === 201) {
 				window.localStorage.setItem("accessToken", accessToken);
 				window.localStorage.setItem("refreshToken", refreshToken);
-
-				alert("로그인 성공");
+				window.localStorage.setItem("user-role", userRole);
+				alert(response.data.data);
 				return thunkAPI.fulfillWithValue(response.data);
 			}
 		} catch (error) {
 			if (400 < error.response.status && error.response.status < 500) {
 				// window.location.reload();
+
 				alert("로그인 실패");
 			}
 			return thunkAPI.rejectWithValue(error);
@@ -33,6 +35,7 @@ export const __loginDB = createAsyncThunk(
 
 const initialState = {
 	isLogin: false,
+	userRole: "",
 	error: null,
 };
 
@@ -45,8 +48,7 @@ const loginSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		[__loginDB.fulfilled]: (state, action) => {
-			console.log("pay", action.payload);
+		[__loginDB.fulfilled]: state => {
 			state.isLogin = true;
 			localStorage.setItem("isLogin", true);
 		},

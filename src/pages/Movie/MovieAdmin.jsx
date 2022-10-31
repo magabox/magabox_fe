@@ -26,7 +26,7 @@ const MovieAdmin = () => {
 
 		const formData = new FormData();
 
-		// 이걸 합친게 바로 위 코드임
+		// formdata에 넣기
 		formData.append("file", imageToUpload);
 		formData.append("title", data.title);
 		formData.append("summary", data.summary);
@@ -45,7 +45,7 @@ const MovieAdmin = () => {
 					"Content-Type": "multipart/form-data",
 				},
 			})
-			.then(function a(response) {
+			.then(function (response) {
 				alert("등록되었습니다.");
 				window.location.replace("/");
 			})
@@ -134,8 +134,9 @@ const Layout = styled.div`
 	margin: 100px auto;
 `;
 const Title = styled.h1`
+	text-indent: -9999px;
 	font-size: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 100px;
 `;
 const UploadWrap = styled.div``;
 
@@ -178,7 +179,7 @@ const ImgUploadWrap = styled.div`
 		.PlusBtn {
 			transform: scale(0.22);
 			opacity: 1;
-			padding-top: 55px;
+			padding-top: 50px;
 			display: block;
 		}
 	}

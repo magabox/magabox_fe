@@ -4,28 +4,27 @@ import { useState } from "react";
 import styled from "styled-components";
 import Input from "../../elem/Input/Input";
 import { serverUrl } from "../../redux/api";
+import { useParams } from "react-router-dom";
 
 const MovieAdmin = () => {
+	const params = useParams();
 	const [imageToUpload, setImageToUpload] = useState(null);
 	const [uploadpreview, setUploadpreview] = useState(null);
 	const [data, setData] = useState({});
+	const accessToken = localStorage.getItem("authorization");
+	const refreshToken = localStorage.getItem("refreshToken");
+	const userRole = localStorage.getItem("user-role");
 	const fileUpload = e => {
-		console.log("파일:", e.target.files[0]);
 		setImageToUpload(e.target.files[0]);
-
 		//image URL코드
 		setUploadpreview(URL.createObjectURL(e.target.files[0]));
 	};
 	const onChangeHandler = e => {
 		const { name, value } = e.target;
 		setData({ ...data, [name]: value });
-		console.log("데이터:", data);
 	};
 	const onClickHandler = e => {
 		e.preventDefault();
-
-		// const accessToken = localStorage.getItem("authorization");
-		// const refreshToken = localStorage.getItem("refreshToken");
 
 		const formData = new FormData();
 
@@ -41,28 +40,49 @@ const MovieAdmin = () => {
 		}
 
 		axios
-			.put(`${serverUrl}/movie/{movieId}`, formData, {
+			.put(`${serverUrl}/movie/${params.id}`, formData, {
 				headers: {
-					// Authorization: accessToken,
-					// "Refresh-Token": refreshToken,
+					Authorization: accessToken,
+					"Refresh-Token": refreshToken,
+					userRole,
 					"Content-Type": "multipart/form-data",
 				},
 			})
 			.then(function a(response) {
-				alert("등록되었습니다.");
+				alert("수정되었습니다.");
 				window.location.replace("/");
 			})
 			.catch(function (error) {
-				alert("등록에 실패했습니다");
-				console.log(error.response);
+				alert("수정에 실패했습니다");
+				console.log("err", error.response);
+			});
+	};
+
+	const onClickDelete = () => {
+		axios
+			.delete(`${serverUrl}/movie/${params.id}`, {
+				headers: {
+					Authorization: accessToken,
+					"Refresh-Token": refreshToken,
+					userRole,
+					"Content-Type": "multipart/form-data",
+				},
+			})
+			.then(function a(response) {
+				alert("삭제되었습니다.");
+				window.location.replace("/");
+			})
+			.catch(function (error) {
+				alert("삭제에 실패했습니다");
+				console.log("err", error.response);
 			});
 	};
 	return (
 		<>
 			<Layout>
-				<Title>영화 수정</Title>
+				<Title>영화 수정/삭제</Title>
 				<UploadWrap>
-					<StForm onSubmit={onClickHandler}>
+					<StForm>
 						<ImgUploadWrap>
 							<ImageLabel htmlFor="file"></ImageLabel>
 							<ImageInput
@@ -120,8 +140,12 @@ const MovieAdmin = () => {
 							</div>
 						</TextUploadWrap>
 						<div>
-							<SubmitBtn type={"submit"}>수정하기</SubmitBtn>
-							<SubmitBtn type={"submit"}>삭제하기</SubmitBtn>
+							<SubmitBtn type={"submit"} onClick={onClickHandler}>
+								수정하기
+							</SubmitBtn>
+							<SubmitBtn type={"submit"} onClick={onClickDelete}>
+								삭제하기
+							</SubmitBtn>
 						</div>
 					</StForm>
 				</UploadWrap>
