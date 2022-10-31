@@ -33,16 +33,10 @@ import {
 	StReserv,
 	StSearch,
 	StStore,
-	StTheater,
+	StTheater,StUl,StLi,StNavBox,StMovieNav
 } from "../styled/HeaderStyled";
 import useMenu from "./hooks/useMenu";
-import UL from "../../../elem/UL/UL";
-import LI from "../../../elem/LI/LI";
-import StUL from "../../../elem/UL/UL";
-import StLI from "../../../elem/LI/LI";
-
 import { useEffect } from "react";
-
 const Header = () => {
 	const menu = useMenu(false);
 	const [isOpen, setIsOpen] = useState();
@@ -56,10 +50,6 @@ const Header = () => {
 	const openModalHandler = () => {
 		setIsOpen(!isOpen);
 	};
-
-	console.log("무비호버", movieHover);
-	console.log("예매호버", reservHover);
-	console.log("극장호버", theaterHover);
 	const onchangeBox = () => {
 		setIsBox(!isBox);
 	};
@@ -175,41 +165,4 @@ const Header = () => {
 
 export default Header;
 
-const StMovieNav = styled.div`
-	width: 100%;
-	height: 50px;
-	background-color: #0e0c0cff;
-	align-items: center;
-	line-height: 50px;
-	margin-top: 5px;
-`;
 
-const StNavBox = styled.div`
-	top: 50px;
-	z-index: 20;
-	color: white;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	height: 44px;
-`;
-
-const StUl = styled.ul`
-	position: absolute;
-	display: flex;
-	left: 80px;
-	top: 40px;
-`;
-
-export const StLi = styled.li`
-	width: 80px;
-	height: 30px;
-	z-index: 100;
-	display: flex;
-	gap: 10px;
-	cursor: pointer;
-
-	&:hover {
-		text-decoration: underline;
-	}
-`;
