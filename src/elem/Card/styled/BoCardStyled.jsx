@@ -23,8 +23,8 @@ export const StHoverWrap = styled.div`
 		}
 		p:last-child {
 			border-top: 1px solid #5a5959;
-			padding: 20px 0;
-			span {
+			padding: 20px;
+			span:last-child {
 				margin-left: 10px;
 				font-size: 1.6em;
 				color: #59bec9;

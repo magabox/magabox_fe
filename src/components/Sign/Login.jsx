@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 const Login = ({ close }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [idInput, setIdInput] = useState();
 	const [pwInput, setPwInput] = useState();
 	const login = useSelector(state => state.login.isLogin);
@@ -36,6 +37,7 @@ const Login = ({ close }) => {
 		if (is_nickname(idInput) && is_password(pwInput)) {
 			dispatch(__loginDB({ username: idInput, password: pwInput }));
 			close();
+			navigate("/");
 		} else if (!is_nickname(idInput) && is_password(pwInput)) {
 			window.confirm("아이디를 확인해주세요");
 		} else if (is_nickname(idInput) && !is_password(pwInput)) {

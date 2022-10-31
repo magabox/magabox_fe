@@ -4,15 +4,15 @@ import {
 	StMainContainer,
 	StMainBackGround,
 	StBackGroundImg,
-  StMainContent,
-  StBoxOffice,
-  StLiter,
-  StBO,
-  StPlus,
-  StBoList,
-  StSearchMenu,
-  StSearchInput,
-  StAnima
+	StMainContent,
+	StBoxOffice,
+	StLiter,
+	StBO,
+	StPlus,
+	StBoList,
+	StSearchMenu,
+	StSearchInput,
+	StAnima,
 } from "../styled/MainSectionStyle";
 import { StCell } from "../../../elem/Cell/styled/CellStyled";
 import remember from "../../../../src/UseImg/megabox_img/megabox039.jpg";
@@ -27,23 +27,18 @@ import Cell from "../../../elem/Cell/Cell";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import { faFilm } from "@fortawesome/free-regular-svg-icons";
-import cal from "../../../UseImg/megabox_img/megabox050.png"
-import film from "../../../UseImg/megabox_img/megabox051.png"
-import ticket from "../../../UseImg/megabox_img/megabox052.png"
-import move from "../../../UseImg/megabox_img/megabox053.png"
-
+import cal from "../../../UseImg/megabox_img/megabox050.png";
+import film from "../../../UseImg/megabox_img/megabox051.png";
+import ticket from "../../../UseImg/megabox_img/megabox052.png";
+import move from "../../../UseImg/megabox_img/megabox053.png";
 
 const MainSection = () => {
-
-  const dispatch = useDispatch();
-  const boxOfficeData = useSelector((state)=>state.boxoffice.boxoffices)
-
-  console.log(boxOfficeData)
-
-
-  useEffect(()=>{
-    dispatch(__getBoxOffice())
-  },[dispatch])
+	const dispatch = useDispatch();
+	const boxOfficeData = useSelector(state => state.boxoffice.boxoffices);
+	console.log(boxOfficeData);
+	useEffect(() => {
+		dispatch(__getBoxOffice());
+	}, [dispatch]);
 
 	return (
 		<>
@@ -51,40 +46,75 @@ const MainSection = () => {
 				<StMainBackGround />
 				<StBackGroundImg src={remember} />
 				<StMainContent>
-          <StBoxOffice>
-            <StLiter>
-              <StBO>박스오피스</StBO>
-              <StPlus>더 많은 영화보기 <FontAwesomeIcon icon={faPlus} size="lg" /></StPlus>
-            </StLiter>
-          </StBoxOffice>
-          <StBoList>
-            {boxOfficeData?.map(card =>(
-              <BoCard key={card.id} card={card}/>
-            ))}
-          </StBoList>
-          <StSearchMenu>
-              <StCell>
-                <StSearchInput placeholder="영화명을 입력해 주세요"/>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" color="gray" style={{position:"absolute",left : "210px"}}/>
-              </StCell>
-              <StCell>
-              <a><img src={cal} style={{width : "24px" ,height : "26px",marginRight : "5px",marginTop : "-2px"}}/>
-                <span>상영시간표</span></a>
-              </StCell>
-              <StCell>
-              <a><img src={film} style={{width : "26px",height : "24px", marginRight : "5px" ,marginTop : "-1px"}}/>
-               <span>박스오피스</span></a>
-              </StCell>
-              <StCell>
-                <a>
-                  <img src={ticket} style={{width: "29px", height: "25px", marginTop : "-2px", marginRight:"5px"}}/>
-                  <span>빠른예매</span>
-                </a>
-              </StCell>
-          </StSearchMenu>
-          <StAnima style={{position:"relative"}}>
-              <img src={move}/>
-          </StAnima>
+					<StBoxOffice>
+						<StLiter>
+							<StBO>박스오피스</StBO>
+							<StPlus>
+								더 많은 영화보기 <FontAwesomeIcon icon={faPlus} size="lg" />
+							</StPlus>
+						</StLiter>
+					</StBoxOffice>
+					<StBoList>
+						{boxOfficeData?.map(card => (
+							<BoCard key={card.id} card={card} />
+						))}
+					</StBoList>
+					<StSearchMenu>
+						<StCell>
+							<StSearchInput placeholder="영화명을 입력해 주세요" />
+							<FontAwesomeIcon
+								icon={faMagnifyingGlass}
+								size="lg"
+								color="gray"
+								style={{ position: "absolute", left: "210px" }}
+							/>
+						</StCell>
+						<StCell>
+							<a>
+								<img
+									src={cal}
+									style={{
+										width: "24px",
+										height: "26px",
+										marginRight: "5px",
+										marginTop: "-2px",
+									}}
+								/>
+								<span>상영시간표</span>
+							</a>
+						</StCell>
+						<StCell>
+							<a>
+								<img
+									src={film}
+									style={{
+										width: "26px",
+										height: "24px",
+										marginRight: "5px",
+										marginTop: "-1px",
+									}}
+								/>
+								<span>박스오피스</span>
+							</a>
+						</StCell>
+						<StCell>
+							<a>
+								<img
+									src={ticket}
+									style={{
+										width: "29px",
+										height: "25px",
+										marginTop: "-2px",
+										marginRight: "5px",
+									}}
+								/>
+								<span>빠른예매</span>
+							</a>
+						</StCell>
+					</StSearchMenu>
+					<StAnima style={{ position: "relative" }}>
+						<img src={move} />
+					</StAnima>
 				</StMainContent>
 			</StMainContainer>
 		</>
@@ -92,6 +122,3 @@ const MainSection = () => {
 };
 
 export default MainSection;
-
-
-

@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -13,9 +12,10 @@ import {
 import { Link } from "react-router-dom";
 
 const BoCard = ({ card }) => {
-	console.log(card);
 	const { imageUrl, totalHeartCount } = card;
+	// console.log("card", card);
 	const userRole = localStorage.getItem("user-role");
+
 	return (
 		<StPost>
 			<StBoxOf>
@@ -26,13 +26,14 @@ const BoCard = ({ card }) => {
 						<div>
 							<p>
 								{userRole === "ROLE_ADMIN" ? (
-									<Link to={`/movie/${card.id}`}>
+									<Link to={`/movie/${card.id}`} state={{ card }}>
 										<span>수정/삭제</span>
 									</Link>
 								) : null}
 							</p>
 							<p>
-								관람평<span>{card.totalRating}</span>
+								관람평
+								{card.totalRating ? <span>{card.totalRating}</span> : null}
 							</p>
 						</div>
 					</StHoverWrap>
