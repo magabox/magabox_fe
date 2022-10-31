@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Input from "../../elem/Input/Input";
 import { serverUrl } from "../../redux/api";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { __deleteMovie } from "../../redux/modules/movie/movieEdit";
+import { useDispatch } from "react-redux";
 
 const MovieAdmin = () => {
-	const params = useParams();
+	const dispatch = useDispatch();
+	const location = useLocation();
+
+	const card = location.state.card;
+	// const test = useSelector(state => state.boxoffice.boxoffices);
+	// console.log(test);
+	// useEffect(() => {
+	// 	dispatch(__getBoxOffice());
+	// }, [dispatch]);
+	console.log(card.id);
 	const [imageToUpload, setImageToUpload] = useState(null);
 	const [uploadpreview, setUploadpreview] = useState(null);
 	const [data, setData] = useState({});
-	const accessToken = localStorage.getItem("authorization");
+	const accessToken = localStorage.getItem("accessToken");
 	const refreshToken = localStorage.getItem("refreshToken");
 	const userRole = localStorage.getItem("user-role");
+
 	const fileUpload = e => {
 		setImageToUpload(e.target.files[0]);
+
 		//image URL코드
 		setUploadpreview(URL.createObjectURL(e.target.files[0]));
+		console.log(e.target.files[0]);
 	};
 	const onChangeHandler = e => {
 		const { name, value } = e.target;
@@ -40,10 +55,10 @@ const MovieAdmin = () => {
 		}
 
 		axios
-			.put(`${serverUrl}/movie/${params.id}`, formData, {
+			.put(`${serverUrl}/movies/${card.id}`, formData, {
 				headers: {
 					Authorization: accessToken,
-					"Refresh-Token": refreshToken,
+					refreshToken,
 					userRole,
 					"Content-Type": "multipart/form-data",
 				},
@@ -58,25 +73,6 @@ const MovieAdmin = () => {
 			});
 	};
 
-	const onClickDelete = () => {
-		axios
-			.delete(`${serverUrl}/movie/${params.id}`, {
-				headers: {
-					Authorization: accessToken,
-					"Refresh-Token": refreshToken,
-					userRole,
-					"Content-Type": "multipart/form-data",
-				},
-			})
-			.then(function a(response) {
-				alert("삭제되었습니다.");
-				window.location.replace("/");
-			})
-			.catch(function (error) {
-				alert("삭제에 실패했습니다");
-				console.log("err", error.response);
-			});
-	};
 	return (
 		<>
 			<Layout>
@@ -93,7 +89,12 @@ const MovieAdmin = () => {
 								onChange={fileUpload}
 								required
 							/>
-							<ImagePreview src={uploadpreview} />
+							{uploadpreview ? (
+								<ImagePreview src={uploadpreview} />
+							) : (
+								<ImagePreview src={card.imageUrl} />
+							)}
+
 							<img
 								className="PlusBtn"
 								src="data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMTIuMDAyIDJjNS41MTggMCA5Ljk5OCA0LjQ4IDkuOTk4IDkuOTk4IDAgNS41MTctNC40OCA5Ljk5Ny05Ljk5OCA5Ljk5Ny01LjUxNyAwLTkuOTk3LTQuNDgtOS45OTctOS45OTcgMC01LjUxOCA0LjQ4LTkuOTk4IDkuOTk3LTkuOTk4em0tLjc0NyA5LjI1aC0zLjVjLS40MTQgMC0uNzUuMzM2LS43NS43NXMuMzM2Ljc1Ljc1Ljc1aDMuNXYzLjVjMCAuNDE0LjMzNi43NS43NS43NXMuNzUtLjMzNi43NS0uNzV2LTMuNWgzLjVjLjQxNCAwIC43NS0uMzM2Ljc1LS43NXMtLjMzNi0uNzUtLjc1LS43NWgtMy41di0zLjVjMC0uNDE0LS4zMzYtLjc1LS43NS0uNzVzLS43NS4zMzYtLjc1Ljc1eiIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+"
@@ -108,7 +109,7 @@ const MovieAdmin = () => {
 									type="text"
 									name="title"
 									onChange={onChangeHandler}
-									placeholder="제목을 입력해주세요"
+									placeholder={card.title}
 									required
 								/>
 							</div>
@@ -121,7 +122,7 @@ const MovieAdmin = () => {
 									name="summary"
 									id="summary"
 									onChange={onChangeHandler}
-									placeholder="내용을 입력해주세요"
+									placeholder={card.summary}
 									required
 								/>
 							</div>
@@ -133,7 +134,7 @@ const MovieAdmin = () => {
 									type="number"
 									name="runtime"
 									onChange={onChangeHandler}
-									placeholder="상영시간을 입력해주세요"
+									placeholder={card.runtime}
 									required
 								/>
 								<span>분</span>
@@ -143,7 +144,18 @@ const MovieAdmin = () => {
 							<SubmitBtn type={"submit"} onClick={onClickHandler}>
 								수정하기
 							</SubmitBtn>
-							<SubmitBtn type={"submit"} onClick={onClickDelete}>
+							<SubmitBtn
+								onClick={() => {
+									const result = window.confirm("이 게시글을 지울까요?");
+
+									if (result) {
+										window.location.replace("/");
+										return dispatch(__deleteMovie(card.id));
+									} else {
+										return;
+									}
+								}}
+							>
 								삭제하기
 							</SubmitBtn>
 						</div>

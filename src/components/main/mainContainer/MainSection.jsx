@@ -23,9 +23,7 @@ import BoCard from "../../../elem/Card/BoCard";
 const MainSection = () => {
 	const dispatch = useDispatch();
 	const boxOfficeData = useSelector(state => state.boxoffice.boxoffices);
-
-	// console.log(boxOfficeData)
-
+	console.log(boxOfficeData);
 	useEffect(() => {
 		dispatch(__getBoxOffice());
 	}, [dispatch]);

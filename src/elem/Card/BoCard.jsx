@@ -13,8 +13,9 @@ import { Link } from "react-router-dom";
 
 const BoCard = ({ card }) => {
 	const { imageUrl, totalHeartCount } = card;
-
+	// console.log("card", card);
 	const userRole = localStorage.getItem("user-role");
+
 	return (
 		<StPost>
 			<StBoxOf>
@@ -25,7 +26,7 @@ const BoCard = ({ card }) => {
 						<div>
 							<p>
 								{userRole === "ROLE_ADMIN" ? (
-									<Link to={`/movie/${card.id}`}>
+									<Link to={`/movie/${card.id}`} state={{ card }}>
 										<span>수정/삭제</span>
 									</Link>
 								) : null}
