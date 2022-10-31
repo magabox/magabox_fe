@@ -1,26 +1,57 @@
-import React from 'react'
-import styled from 'styled-components'
-import Button from '../Button/Button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { StPost, StBoxOf, StImg, StBtn } from './styled/BoCardStyled'
+import React from "react";
+import styled from "styled-components";
+import Button from "../Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+	StPost,
+	StBoxOf,
+	StImg,
+	StBtn,
+	StHoverWrap,
+} from "./styled/BoCardStyled";
+import { Link } from "react-router-dom";
 
-const BoCard = ({card}) => {
-    console.log(card)
-    const {imageUrl, totalHeartCount }= card
+const BoCard = ({ card }) => {
+	console.log(card);
+	const { imageUrl, totalHeartCount } = card;
+	const userRole = localStorage.getItem("user-role");
+	return (
+		<StPost>
+			<StBoxOf>
+				<div>
+					<StImg src={imageUrl} />
+					<StHoverWrap>
+						<p>{card.summary}</p>
+						<div>
+							<p>
+								{userRole === "ROLE_ADMIN" ? (
+									<Link to={`/movie/${card.id}`}>
+										<span>수정/삭제</span>
+									</Link>
+								) : null}
+							</p>
+							<p>
+								관람평<span>{card.totalRating}</span>
+							</p>
+						</div>
+					</StHoverWrap>
+				</div>
 
-  return (
-    <StPost>
-        <StBoxOf>
-            <StImg src={imageUrl}/>
-            <StBtn>
-                <Button theme="like"><FontAwesomeIcon icon={faHeart} size="lg" style={{marginRight : "5px"}}/>{totalHeartCount}</Button>
-                <Button theme="reservation">예매</Button>
-            </StBtn>
-        </StBoxOf>
-    </StPost>
-  )
-}
+				<StBtn>
+					<Button theme="like">
+						<FontAwesomeIcon
+							icon={faHeart}
+							size="lg"
+							style={{ marginRight: "5px" }}
+						/>
+						{totalHeartCount}
+					</Button>
+					<Button theme="reservation">예매</Button>
+				</StBtn>
+			</StBoxOf>
+		</StPost>
+	);
+};
 
-export default BoCard
-
+export default BoCard;
