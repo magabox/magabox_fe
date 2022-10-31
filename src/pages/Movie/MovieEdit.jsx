@@ -32,7 +32,7 @@ const MovieAdmin = () => {
 		// 이걸 합친게 바로 위 코드임
 		formData.append("image", imageToUpload);
 		formData.append("title", data.title);
-		formData.append("desc", data.desc);
+		formData.append("summary", data.summary);
 		formData.append("runtime", data.runtime);
 
 		let entries = formData.entries();
@@ -94,12 +94,12 @@ const MovieAdmin = () => {
 							</div>
 
 							<div>
-								<TextLabel htmlFor="">desc</TextLabel>
+								<TextLabel htmlFor="">summary</TextLabel>
 								<Input
 									theme={"join"}
 									type="text"
-									name="desc"
-									id="desc"
+									name="summary"
+									id="summary"
 									onChange={onChangeHandler}
 									placeholder="내용을 입력해주세요"
 									required
