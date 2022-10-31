@@ -47,7 +47,7 @@ const Join = () => {
 				username: idInput,
 			},
 		);
-		console.log(response);
+		// console.log(response);
 		window.confirm(`${response.data.data}`);
 	};
 
@@ -65,7 +65,7 @@ const Join = () => {
 						password: pwInput,
 					},
 				);
-				console.log(response);
+				// console.log(response);
 				window.confirm("회원가입이 되었습니다!");
 				dispatch(
 					__loginDB({ name: nameInput, username: idInput, password: pwInput }),

@@ -35,7 +35,7 @@ import move from "../../../UseImg/megabox_img/megabox053.png";
 const MainSection = () => {
 	const dispatch = useDispatch();
 	const boxOfficeData = useSelector(state => state.boxoffice.boxoffices);
-	console.log(boxOfficeData);
+	// console.log(boxOfficeData);
 	useEffect(() => {
 		dispatch(__getBoxOffice());
 	}, [dispatch]);
@@ -66,7 +66,11 @@ const MainSection = () => {
 								icon={faMagnifyingGlass}
 								size="lg"
 								color="gray"
-								style={{ position: "absolute", left: "210px" }}
+								style={{
+									position: "absolute",
+									left: "210px",
+									cursor: "pointer",
+								}}
 							/>
 						</StCell>
 						<StCell>
@@ -79,6 +83,7 @@ const MainSection = () => {
 										marginRight: "5px",
 										marginTop: "-2px",
 									}}
+									alt="캘린더"
 								/>
 								<span>상영시간표</span>
 							</a>
@@ -93,6 +98,7 @@ const MainSection = () => {
 										marginRight: "5px",
 										marginTop: "-1px",
 									}}
+									alt="필름"
 								/>
 								<span>박스오피스</span>
 							</a>
@@ -107,13 +113,14 @@ const MainSection = () => {
 										marginTop: "-2px",
 										marginRight: "5px",
 									}}
+									alt="티켓"
 								/>
 								<span>빠른예매</span>
 							</a>
 						</StCell>
 					</StSearchMenu>
 					<StAnima style={{ position: "relative" }}>
-						<img src={move} />
+						<img src={move} alt="move" />
 					</StAnima>
 				</StMainContent>
 			</StMainContainer>

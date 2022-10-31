@@ -6,7 +6,7 @@ import { __movie } from "../../redux/modules/movie/movieEdit";
 const MovieTest = () => {
 	const dispatch = useDispatch();
 	const movie = useSelector(state => state.movie);
-	console.log(movie);
+	// console.log(movie);
 	useEffect(() => {
 		dispatch(__movie());
 	}, [dispatch]);
@@ -18,7 +18,7 @@ const MovieTest = () => {
 					<div key={idx}>
 						<p>{movie.title}</p>
 						<p>{movie.summary}</p>
-						<img src={movie.imageUrl} />
+						<img src={movie.imageUrl} alt={movie.title} />
 						<p>좋아요{movie.totalHeartCount}개</p>
 					</div>
 				);

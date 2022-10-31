@@ -17,6 +17,7 @@ const Router = () => {
 						<Route path="movieadmin" element={<MovieAdmin />} />
 						<Route path="movie/:id" element={<MovieEdit />} />
 					</Route>
+
 					<Route path="/join" element={<Join />} />
 				</Routes>
 			</BrowserRouter>

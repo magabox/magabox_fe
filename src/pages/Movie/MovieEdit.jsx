@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
@@ -14,12 +14,13 @@ const MovieAdmin = () => {
 	const location = useLocation();
 
 	const card = location.state.card;
+	console.log(card);
 	// const test = useSelector(state => state.boxoffice.boxoffices);
 	// console.log(test);
 	// useEffect(() => {
 	// 	dispatch(__getBoxOffice());
 	// }, [dispatch]);
-	console.log(card.id);
+	// console.log(card.id);
 	const [imageToUpload, setImageToUpload] = useState(null);
 	const [uploadpreview, setUploadpreview] = useState(null);
 	const [data, setData] = useState({});
@@ -32,7 +33,7 @@ const MovieAdmin = () => {
 
 		//image URL코드
 		setUploadpreview(URL.createObjectURL(e.target.files[0]));
-		console.log(e.target.files[0]);
+		// console.log(e.target.files[0]);
 	};
 	const onChangeHandler = e => {
 		const { name, value } = e.target;
@@ -69,7 +70,7 @@ const MovieAdmin = () => {
 			})
 			.catch(function (error) {
 				alert("수정에 실패했습니다");
-				console.log("err", error.response);
+				// console.log("err", error.response);
 			});
 	};
 
@@ -144,22 +145,22 @@ const MovieAdmin = () => {
 							<SubmitBtn type={"submit"} onClick={onClickHandler}>
 								수정하기
 							</SubmitBtn>
-							<SubmitBtn
-								onClick={() => {
-									const result = window.confirm("이 게시글을 지울까요?");
-
-									if (result) {
-										window.location.replace("/");
-										return dispatch(__deleteMovie(card.id));
-									} else {
-										return;
-									}
-								}}
-							>
-								삭제하기
-							</SubmitBtn>
 						</div>
 					</StForm>
+					<SubmitBtn
+						onClick={() => {
+							const result = window.confirm("이 게시글을 지울까요?");
+
+							if (result) {
+								window.location.replace("/");
+								return dispatch(__deleteMovie(card.id));
+							} else {
+								return;
+							}
+						}}
+					>
+						삭제하기
+					</SubmitBtn>
 				</UploadWrap>
 			</Layout>
 		</>
