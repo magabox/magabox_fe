@@ -1,5 +1,44 @@
 import styled from "styled-components";
 
+export const StMovieNav = styled.div`
+	width: 100%;
+	height: 50px;
+	background-color: #0e0c0cff;
+	align-items: center;
+	line-height: 50px;
+	margin-top: 5px;
+`;
+
+export const StNavBox = styled.div`
+	top: 50px;
+	z-index: 20;
+	color: white;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 44px;
+`;
+
+export const StUl = styled.ul`
+	position: absolute;
+	display: flex;
+	left: 80px;
+	top: 40px;
+`;
+
+export const StLi = styled.li`
+	width: 80px;
+	height: 30px;
+	z-index: 100;
+	display: flex;
+	gap: 10px;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+
 
 
 export const StLogo = styled.img`
@@ -14,7 +53,7 @@ export const StMy = styled.img`
 	src : ${(props)=> props.src};
 	width:18px;
 	height: 20px;
-	margin-left : 150px;
+	margin-left : 110px;
 
 `;
 
@@ -120,7 +159,7 @@ export const StDownLeftBox = styled.div`
 export const StDownRightBox = styled.div`
 	display : flex;
 	width:50%;
-	margin-left : 308px;
+	margin-left : 330px;
     margin-top : 12px;
 
 	& img{
