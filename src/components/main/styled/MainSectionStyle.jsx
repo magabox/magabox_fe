@@ -1,5 +1,46 @@
 import styled from "styled-components";
 
+export const StAnima = styled.div`
+    display: flex;
+    justify-content: center;
+    width:100%;
+    height:24px;
+    margin : 30px 0 0 0;
+
+    & img{
+    animation: motion 0.7s infinite alternate;
+    position:absolute;
+    left:50%;
+    @keyframes motion {
+      0% {top:0px}
+      100%{top:10px}
+    }
+  }
+`;
+
+export const StSearchInput = styled.input`
+    border : none;
+    border-bottom : 1px solid #888;
+    background-color: transparent;
+    width : 200px;
+    padding-bottom: 5px;
+
+`;
+
+export const StSearchMenu = styled.div`
+  width:100%;
+  height : 52px;
+  display: block;
+  margin: 50px 0 0 0;
+  padding: 23px 0 0 0;
+  background-color: rgba(0,0,0,0.2);
+  overflow: hidden;
+  color : white;
+  line-height: 23px;
+  display: flex;
+`;
+
+
 export const StBoList = styled.div`
   width : 100%;
   height: 398px;
