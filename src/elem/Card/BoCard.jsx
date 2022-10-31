@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -13,8 +12,8 @@ import {
 import { Link } from "react-router-dom";
 
 const BoCard = ({ card }) => {
-	console.log(card);
 	const { imageUrl, totalHeartCount } = card;
+
 	const userRole = localStorage.getItem("user-role");
 	return (
 		<StPost>
@@ -32,7 +31,8 @@ const BoCard = ({ card }) => {
 								) : null}
 							</p>
 							<p>
-								관람평<span>{card.totalRating}</span>
+								관람평
+								{card.totalRating ? <span>{card.totalRating}</span> : null}
 							</p>
 						</div>
 					</StHoverWrap>
