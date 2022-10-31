@@ -24,7 +24,6 @@ import UL from "../../../elem/UL/UL";
 import LI from "../../../elem/LI/LI";
 import StUL from "../../../elem/UL/UL";
 import StLI from "../../../elem/LI/LI";
-import { faMenorah } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 
 
