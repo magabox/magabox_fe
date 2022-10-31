@@ -34,8 +34,18 @@ const ButtonStyle = styled.button`
           color : white;
           border-radius : 4px;
           box-sizing : border-box;
-          font-weight: 400;
-        
+          font-weight: 400;        
+        `;
+      case "reservation":
+        return css`
+          width:160px;
+          height:36px;
+          border:none;
+          color:white;
+          background-color: #037b94;
+          border-radius: 4px;
+          font-weight : 400;
+          font-size : 15px;
         `;
 			default:
 				break;
