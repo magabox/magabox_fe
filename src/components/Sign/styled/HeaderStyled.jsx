@@ -14,17 +14,18 @@ export const StMy = styled.img`
 	src : ${(props)=> props.src};
 	width:18px;
 	height: 20px;
-	margin-left : 17px;
+	margin-left : 150px;
 
 `;
 
 export const StCal = styled.img`
 	src : ${(props)=> props.src};
-	position: absolute;
-	width:35px;
-	height: 35px;
-	top : 3px;
-	margin-left : 76px;
+    line-break: inherit;
+    position: absolute;
+    right: 3.8%;
+    top: 5px;
+    width: 35px;
+    height: 35px;
 
 `;
 
@@ -43,9 +44,7 @@ export const StStore = styled.img`
 	width:45px;
 	height: 18px;
 	margin-left : 60px;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
+
 `;
 
 export const StEvent = styled.img`
@@ -74,7 +73,6 @@ export const StReserv = styled.img`
 	color:white;
 	width:30px;
 	height: 18px;
-    margin-bottom: 30px;
     &:hover{
         text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
     }
@@ -87,7 +85,6 @@ export const StMovie = styled.img`
 	width:30px;
 	height: 18px;
     position: relative;
-
     &:hover{
         text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
     }
@@ -142,6 +139,10 @@ export const StUpLeftBox = styled.div`
 	display: flex;
 	gap : 20px;
 	font-size: 13px;
+
+    & span{
+        color : #888;
+    }
 	
 `;
 
@@ -149,6 +150,11 @@ export const StUpRightBox = styled.div`
 	display: flex;
 	gap : 20px;
 	font-size: 13px;
+
+    & span{
+        color : #888;
+    }
+	
 `;
 
 export const StUpBox = styled.div`
@@ -177,7 +183,6 @@ export const StHeaderBox = styled.div`
 	background-color: #000000ff;
 	position : fixed;
 	top : 0;
-	opacity : 0.5;
 	z-index  : 15;
 	border-bottom: 1px solid rgba(255,255,255,.2);
 	display:flex;

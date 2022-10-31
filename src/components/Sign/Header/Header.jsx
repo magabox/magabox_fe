@@ -22,27 +22,37 @@ StTheater
 import useMenu from "./hooks/useMenu";
 import UL from "../../../elem/UL/UL";
 import LI from "../../../elem/LI/LI";
-import { StUl } from "../../../elem/UL/UL";
-import { StLi } from "../../../elem/LI/LI";
+import StUL from "../../../elem/UL/UL";
+import StLI from "../../../elem/LI/LI";
+import { faMenorah } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 
 const Header = () => {
 	const menu = useMenu(false);
-	const [isOpen, setIsOpen] = useState(false);
-	const movieHover = useMenu(false);
-	const resevHover = useMenu(false);
-	const theaterHover = useMenu(false);
-	const eventHover = useMenu(false);
-	const beneHover = useMenu(false);
+	const [isOpen, setIsOpen] = useState();
+	const [isBox,setIsBox] = useState(true);
+	const movieHover = useMenu();
+	const reservHover = useMenu();
+	const theaterHover = useMenu();
+	const eventHover = useMenu();
+	const beneHover = useMenu();
 
 	const openModalHandler = () => {
 		setIsOpen(!isOpen);
 	};
-	console.log(movieHover.value)
+
+	console.log("무비호버",movieHover)
+	console.log("예매호버",reservHover)
+	console.log("극장호버",theaterHover)
+	const onchangeBox = () => {
+		setIsBox(!isBox)
+	}
+
 
 	return (
 		<>
-		<StHeaderBox>
+		<StHeaderBox >
 			<StHeaderContentBox>
 				<StUpBox>
 					<StUpLeftBox>
@@ -57,23 +67,47 @@ const Header = () => {
 					</StUpRightBox>
 				</StUpBox>
 				<StDownBox>
-					<StDownLeftBox>
+					<StDownLeftBox onMouseEnter={onchangeBox}>
 						<StBars src={bars}/>
 						<StSearch src={search}/>
-						<StMovie src={movie}value={movieHover.value} onMouseEnter={movieHover.onMouseEnter} />
-						{movieHover.value ? 
-							<UL onMouseLeave={movieHover.onMouseLeave} styled={{color : "green"}}>
-								<LI>전체영화</LI>
-								<LI>큐레이션</LI>
-								<LI>무비포스트</LI>
-							</UL> : null}
-						<StReserv src={reserv} value={resevHover.value} onMouseEnter={resevHover.onMouseEnter}/>
-						<StTheater src={theater}/>
+						<StMovie src={movie}value={movieHover.value} onMouseEnter={movieHover.openMenu} />
+						{movieHover.value ?  
+							<StUl onMouseLeave={movieHover.closeMenu}>
+								<StLi>전체영화</StLi>
+								<StLi>큐레이션</StLi>
+								<StLi>무비포스트</StLi>
+							</StUl> : null}
+						
+						<StReserv src={reserv}  value={reservHover.value} onMouseEnter={reservHover.openMenu}/>
+						{reservHover.value && !movieHover.value && !theaterHover.value? 
+							<StUl style={{left : "150px"}} onMouseLeave={reservHover.closeMenu} >
+								<StLi>빠른예매</StLi>
+								<StLi>상영시간표</StLi>
+								<StLi style={{width : "160px"}}>더 부티크 프라이빗 예매</StLi>
+							</StUl> : null}
+						<StTheater src={theater} value={theaterHover.value} onMouseEnter={theaterHover.openMenu} />
+						
+						{theaterHover.value && !movieHover.value && theaterHover.value? 
+									<StUl  style={{left : "300px"}} onMouseLeave={theaterHover.closeMenu} >
+										<StLi>전체극장</StLi>
+										<StLi>특별관</StLi>
+									</StUl> : null} 
 					</StDownLeftBox>
-					<StDownRightBox>
-						<StEvent src={events}/>
+					<StDownRightBox onMouseEnter={onchangeBox} >   
+						<StEvent src={events} onMouseEnter={eventHover.openMenu}/>
+						{eventHover.value && !movieHover.value && !theaterHover.value &&!reservHover.value? 
+							<StUl style={{left : "620px"}} onMouseLeave={eventHover.closeMenu}>
+								<StLi style={{width : "50px" }}>진행중</StLi>
+								<StLi style={{marginLeft : "10px"}}>지난 이벤트</StLi>
+								<StLi style={{marginLeft : "10px"}}>당첨자 발표</StLi>
+							</StUl> : null}
 						<StStore src={store}/>
-						<StBenefit src={benefit}/>
+						<StBenefit src={benefit} onMouseEnter={beneHover.openMenu}/>
+						{beneHover.value && !eventHover.value? 
+									<StUl  style={{left : "800px"}} onMouseLeave={beneHover.closeMenu} >
+										<StLi style={{width : "130px"}}>메가박스 멤버십</StLi>
+										<StLi>제휴/할인</StLi>
+									</StUl> : null} 
 						<StCal src={cal}/>
 						<StMy src={my}/>
 					</StDownRightBox>
@@ -81,8 +115,13 @@ const Header = () => {
 				<StLogo src={logo}/>
 			</StHeaderContentBox>
 			<StNavBox>
-				<StMovieNav >
-				</StMovieNav>
+				{isBox ?
+				<StMovieNav onMouseLeave={onchangeBox}>
+
+				
+
+						
+				</StMovieNav>:null }
 			</StNavBox>
 		</StHeaderBox>
 		{isOpen ? <Login close={openModalHandler} /> : null}
@@ -99,6 +138,9 @@ const StMovieNav = styled.div`
 	width: 100%;
 	height : 50px;
 	background-color : #0e0c0cff;
+	align-items: center;
+	line-height: 50px;
+	margin-top : 5px;
 
 `;
 
@@ -106,7 +148,32 @@ const StNavBox = styled.div`
 	top : 50px;
 	z-index : 20;
 	color : white;
+	display : flex;
+	align-items: center;
+	width: 100%;
+	height: 44px;
 
+`;
+
+const StUl = styled.ul`
+  position: absolute;
+  display: flex;
+  left : 80px;
+  top : 40px;
+  
+`;
+
+export const StLi = styled.li`
+    width: 80px;
+	height : 30px;
+	z-index: 100;
+	display: flex;
+	gap:10px;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
 `;
 
 

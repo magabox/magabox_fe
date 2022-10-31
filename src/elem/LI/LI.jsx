@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const LI = ({children}) => {
+const StLI = ({children}) => {
   return (
     <StLi>
         {children}
@@ -9,7 +9,7 @@ const LI = ({children}) => {
   )
 }
 
-export default LI
+export default StLI
 
 export const StLi = styled.li`
     width: 80px;

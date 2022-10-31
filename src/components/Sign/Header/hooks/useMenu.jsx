@@ -1,19 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
 
-const useMenu = (initialState) => {
+const useMenu = (initialState = false) => {
     const [value,setValue] = useState(initialState);
 
     const openMenu = () => {
 		setValue(true)
-	}
 
-	const closeMenu = () => {
+    }
+    const closeMenu = () => {
 		setValue(false)
 	}
 
-
-  return {value, onMouseEnter : openMenu, onMouseLeave : closeMenu}
+  return {value,openMenu,closeMenu}
 }
 
 export default useMenu

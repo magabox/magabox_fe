@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const UL = ({children}) => {
+const StUL = ({children}) => {
   return (
     <StUl>
         {children}
@@ -9,7 +9,7 @@ const UL = ({children}) => {
   )
 }
 
-export default UL
+export default StUL
 
 const StUl = styled.ul`
   position: absolute;
