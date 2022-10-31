@@ -1,9 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { is_nickname, is_password } from "../../common/logics";
 import styled from "styled-components";
 import Input from "../../elem/Input/Input";
+import { __loginDB } from "../../redux/modules/user/login";
 import { Link } from "react-router-dom";
 
 const Login = ({ close }) => {
+	const dispatch = useDispatch();
+	const [idInput, setIdInput] = useState();
+	const [pwInput, setPwInput] = useState();
+	const login = useSelector(state => state.login.isLogin);
+
+	useEffect(() => {
+		if (login) {
+			close();
+		}
+	}, [login]);
+
+	const handleChangeId = e => {
+		e.preventDefault();
+		setIdInput(e.target.value);
+	};
+
+	const handleChangePw = e => {
+		e.preventDefault();
+		setPwInput(e.target.value);
+	};
+
+	const handleLogin = async e => {
+		e.preventDefault();
+
+		if (is_nickname(idInput) && is_password(pwInput)) {
+			dispatch(__loginDB({ username: idInput, password: pwInput }));
+			close();
+		} else if (!is_nickname(idInput) && is_password(pwInput)) {
+			window.confirm("아이디를 확인해주세요");
+		} else if (is_nickname(idInput) && !is_password(pwInput)) {
+			window.confirm("비밀번호를 확인해주세요");
+		} else {
+			window.confirm("아이디를 확인해주세요");
+		}
+	};
+
+	const body = document.querySelector("body");
+	const scrollPosition = window.pageYOffset;
+
+	useEffect(() => {
+		body.style.overflow = "hidden";
+		body.style.position = "fixed";
+		body.style.top = `-${scrollPosition}px`;
+		body.style.left = "0";
+		body.style.right = "0";
+		return () => {
+			body.style.removeProperty("overflow");
+			body.style.removeProperty("position");
+			body.style.removeProperty("top");
+			body.style.removeProperty("left");
+			body.style.removeProperty("right");
+			window.scrollTo(0, scrollPosition);
+		};
+	}, []);
+
 	return (
 		<>
 			<LoginBg>
@@ -14,18 +74,24 @@ const Login = ({ close }) => {
 							close();
 						}}
 					>
-						레이어닫기
+						모달닫기
 					</LoginCloseBtn>
 					<LoginColWrap>
 						<LoginColLeft>
-							<Input theme={"login"} placeholder="아이디" mg={"0 0 15px 0"} />
+							<Input
+								theme={"login"}
+								placeholder="아이디"
+								mg={"0 0 15px 0"}
+								onChange={handleChangeId}
+							/>
 							<Input
 								theme={"login"}
 								placeholder="비밀번호"
 								mg={"0 0 15px 0"}
 								type="password"
+								onChange={handleChangePw}
 							/>
-							<LoginBtn>로그인</LoginBtn>
+							<LoginBtn onClick={handleLogin}>로그인</LoginBtn>
 							<div>
 								<Link
 									to="/join"
@@ -67,7 +133,7 @@ const LoginBg = styled.section`
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	z-index : 999;
+	z-index: 999;
 `;
 
 const LoginWrap = styled.article`
@@ -127,7 +193,7 @@ const LoginColLeft = styled.div`
 		width: 70%;
 		margin: 0 auto;
 		border-top: 1px solid #e0e0e0;
-		padding: 20px 0 30px;
+		padding: 30px 0 30px;
 	}
 `;
 
