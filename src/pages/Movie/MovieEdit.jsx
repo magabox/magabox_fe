@@ -41,7 +41,7 @@ const MovieAdmin = () => {
 		}
 
 		axios
-			.post(`${serverUrl}/movie/{movieId}`, formData, {
+			.put(`${serverUrl}/movie/{movieId}`, formData, {
 				headers: {
 					// Authorization: accessToken,
 					// "Refresh-Token": refreshToken,
