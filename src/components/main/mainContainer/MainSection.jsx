@@ -10,6 +10,9 @@ import {
   StBO,
   StPlus,
   StBoList,
+  StSearchMenu,
+  StSearchInput,
+  StAnima
 } from "../styled/MainSectionStyle";
 import { StCell } from "../../../elem/Cell/styled/CellStyled";
 import remember from "../../../../src/UseImg/megabox_img/megabox039.jpg";
@@ -62,6 +65,7 @@ const MainSection = () => {
           <StSearchMenu>
               <StCell>
                 <StSearchInput placeholder="영화명을 입력해 주세요"/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" color="gray" style={{position:"absolute",left : "210px"}}/>
               </StCell>
               <StCell>
               <a><img src={cal} style={{width : "24px" ,height : "26px",marginRight : "5px",marginTop : "-2px"}}/>
@@ -89,44 +93,5 @@ const MainSection = () => {
 
 export default MainSection;
 
-export const StAnima = styled.div`
-    display: flex;
-    justify-content: center;
-    width:100%;
-    height:24px;
-    margin : 30px 0 0 0;
-
-    & img{
-    animation: motion 0.7s infinite alternate;
-    position:absolute;
-    left:50%;
-    @keyframes motion {
-      0% {top:0px}
-      100%{top:10px}
-    }
-  }
-`;
-
-export const StSearchInput = styled.input`
-    border : none;
-    border-bottom : 1px solid #888;
-    background-color: transparent;
-    width : 200px;
-    padding-bottom: 5px;
-
-`;
-
-export const StSearchMenu = styled.div`
-  width:100%;
-  height : 52px;
-  display: block;
-  margin: 50px 0 0 0;
-  padding: 23px 0 0 0;
-  background-color: rgba(0,0,0,0.2);
-  overflow: hidden;
-  color : white;
-  line-height: 23px;
-  display: flex;
-`;
 
 
