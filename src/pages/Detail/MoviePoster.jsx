@@ -65,6 +65,7 @@ export const InnerWrap = styled.div`
 `;
 
 export const MoviePosterWrap = styled.div`
+	margin-top: 100px;
 	padding: 70px 0;
 	color: #fff;
 	background: url("https://img.megabox.co.kr/static/pc/images/movie/bg-movie-detail-poster.png");

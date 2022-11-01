@@ -323,7 +323,6 @@ export const InfoContent = styled.div`
 
 export const InnerWrap = styled.div`
 	width: 1100px;
-	height: 1100px;
 	margin: 0 auto;
 `;
 
