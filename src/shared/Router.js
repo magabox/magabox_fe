@@ -5,7 +5,7 @@ import Detail from "../pages/Detail/Detail";
 import MovieAdmin from "../pages/Movie/MovieAdmin";
 import MovieEdit from "../pages/Movie/MovieEdit";
 import Header from "../components/Sign/Header/Header";
-
+import HeaderDetail from "../components/Sign/Header/HeaderDetail";
 const Router = () => {
 	return (
 		<>
@@ -13,9 +13,12 @@ const Router = () => {
 				<Routes>
 					<Route path="/" element={<Header />}>
 						<Route path="" element={<Main />} />
-						<Route path="detail" element={<Detail />} />
+
 						<Route path="movieadmin" element={<MovieAdmin />} />
 						<Route path="movie/:id" element={<MovieEdit />} />
+					</Route>
+					<Route path="/" element={<HeaderDetail />}>
+						<Route path="detail/:id" element={<Detail />} />
 					</Route>
 
 					<Route path="/join" element={<Join />} />

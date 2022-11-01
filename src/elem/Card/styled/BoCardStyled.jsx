@@ -10,30 +10,43 @@ export const StHoverWrap = styled.div`
 	box-sizing: border-box;
 	width: 245px;
 	height: 352px;
-	div {
-		margin-top: 200px;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		p:first-child {
-			margin-bottom: 10px;
-			a {
-				color: #fff;
-			}
-		}
-		p:last-child {
-			border-top: 1px solid #5a5959;
-			padding: 20px;
-			span:last-child {
-				margin-left: 10px;
-				font-size: 1.6em;
-				color: #59bec9;
-                line-height: 1.2;
+	p {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		/* text-overflow 2줄 이상 처리 */
+		display: -webkit-box;
+		-webkit-line-clamp: 6;
+		-webkit-box-orient: vertical;
+		line-height: 1.6;
+	}
+`;
+export const StFlexWrap = styled.div`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	p {
+		text-align: center;
+	}
+	p:first-child {
+		margin-bottom: 10px;
+		a {
+			color: #fff;
 		}
 	}
-}
+	p:last-child {
+		border-top: 1px solid #5a5959;
+		padding: 10px;
+		span:last-child {
+			margin-left: 10px;
+			font-size: 1.6em;
+			color: #59bec9;
+		}
+	}
+	div {
+		position: absolute;
+		bottom: 0;
+	}
 `;
-
 export const StBoxOf = styled.div`
 	position: relative;
 	:hover {
@@ -64,4 +77,5 @@ export const StImg = styled.img`
 	width: 245px;
 	height: 352px;
 	border-radius: 5px;
+	object-fit: cover;
 `;

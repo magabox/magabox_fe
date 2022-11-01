@@ -8,6 +8,7 @@ import {
 	StImg,
 	StBtn,
 	StHoverWrap,
+	StFlexWrap,
 } from "./styled/BoCardStyled";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,26 +32,29 @@ const BoCard = ({ card }) => {
 	return (
 		<StPost>
 			<StBoxOf>
-				<div>
-					<StImg src={imageUrl} />
-					<StHoverWrap>
-						<p>{card.summary}</p>
-						<div>
-							<p>
-								{userRole === "ROLE_ADMIN" ? (
-									<Link to={`/movie/${card.id}`} state={{ card }}>
-										<span>수정/삭제</span>
-									</Link>
-								) : null}
-							</p>
-							<p>
-								관람평
-								{card.totalRating ? <span>{card.totalRating}</span> : null}
-							</p>
-						</div>
-					</StHoverWrap>
-				</div>
-
+				<Link to={`/detail/${card.id}`}>
+					<div>
+						<StImg src={imageUrl} />
+						<StHoverWrap>
+							<p>{card.summary}</p>
+							<StFlexWrap>
+								<div>
+									<p>
+										{userRole === "ROLE_ADMIN" ? (
+											<Link to={`/movie/${card.id}`} state={{ card }}>
+												<span>수정/삭제</span>
+											</Link>
+										) : null}
+									</p>
+									<p>
+										관람평
+										{card.totalRating ? <span>{card.totalRating}</span> : null}
+									</p>
+								</div>
+							</StFlexWrap>
+						</StHoverWrap>
+					</div>
+				</Link>
 				<StBtn>
 					<Button theme="like" onClick={()=>dispatch(__heart(card.id))}>
 						<FontAwesomeIcon
