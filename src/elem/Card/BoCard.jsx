@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as Regular } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as Solid } from "@fortawesome/free-solid-svg-icons";
 import {
 	StPost,
 	StBoxOf,
@@ -22,7 +23,9 @@ const BoCard = ({ card }) => {
 	// console.log("card", card);
 	const userRole = localStorage.getItem("user-role");
     const username = localStorage.getItem("user-name");
-    const filter = heartList.filter((heart)=>(username = heart.username));
+    const filter = heartList.filter((heart)=>(
+        username === heart.username
+        ));
 
     useEffect(()=>{
         dispatch(__getBoxOffice())
@@ -53,11 +56,17 @@ const BoCard = ({ card }) => {
 
 				<StBtn>
 					<Button theme="like" onClick={()=>dispatch(__heart(card.id))}>
-						<FontAwesomeIcon
-							icon={faHeart}
+                        {filter.length === 0 ?
+                        <FontAwesomeIcon
+							icon={Regular}
 							size="lg"
 							style={{ marginRight: "5px" }}
-						/>
+						/> :
+						<FontAwesomeIcon
+							icon={Solid}
+							size="lg"
+							style={{ marginRight: "5px" }}
+						/>}
 						{totalHeartCount}
 					</Button>
 					<Button theme="reservation">예매</Button>
