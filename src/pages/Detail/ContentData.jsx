@@ -7,7 +7,7 @@ const ContentData = () => {
 		{
 			id: 0,
 			title: "주요정보",
-			description: (
+			content: (
 				<>
 					<div>
 						<InfoContent>
@@ -113,17 +113,17 @@ const ContentData = () => {
 		{
 			id: 1,
 			title: "실관람평",
-			description: "제작중입니당",
+			content: "제작중입니당",
 		},
 		{
 			id: 2,
 			title: "무비포스트",
-			description: "미완성입니다",
+			content: "미완성입니다",
 		},
 		{
 			id: 3,
 			title: "예고편/스틸컷",
-			description: "예고편미완성입니당",
+			content: "예고편미완성입니당",
 		},
 	];
 	const [index, setIndex] = useState(0);
@@ -149,7 +149,7 @@ const ContentData = () => {
 							.filter(item => index === item.id)
 							.map(item => (
 								<>
-									<div>{item.description}</div>
+									<div>{item.content}</div>
 								</>
 							))}
 					</section>
