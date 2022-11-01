@@ -9,7 +9,6 @@ const ContentData = () => {
 			title: "주요정보",
 			description: (
 				<>
-					{" "}
 					<div>
 						<InfoContent>
 							<p>상영타입 : 2D(자막)</p>

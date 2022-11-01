@@ -189,7 +189,7 @@ const JoinWrap = styled.div`
 `;
 
 const JoinLayout = styled.div`
-	width: 1080px;
+	width: 720px;
 	height: 100vh;
 	background-color: #fff;
 	display: flex;
