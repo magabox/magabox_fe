@@ -28,9 +28,10 @@ export const StHoverWrap = styled.div`
 				margin-left: 10px;
 				font-size: 1.6em;
 				color: #59bec9;
-			}
+                line-height: 1.2;
 		}
 	}
+}
 `;
 
 export const StBoxOf = styled.div`

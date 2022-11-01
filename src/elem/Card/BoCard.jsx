@@ -10,11 +10,23 @@ import {
 	StHoverWrap,
 } from "./styled/BoCardStyled";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { __heart } from "../../redux/modules/heartSlice.js/heartSlice";
+import { useEffect } from "react";
+import { __getBoxOffice } from "../../redux/modules/boxOffice/boxOfiiceSlice";
 
 const BoCard = ({ card }) => {
-	const { imageUrl, totalHeartCount } = card;
+    const dispatch = useDispatch();
+	const { imageUrl, totalHeartCount,heartList } = card;
+    const heartData = useSelector((state)=>state.heart.heartData);
 	// console.log("card", card);
 	const userRole = localStorage.getItem("user-role");
+    const username = localStorage.getItem("user-name");
+    const filter = heartList.filter((heart)=>(username = heart.username));
+
+    useEffect(()=>{
+        dispatch(__getBoxOffice())
+    },[dispatch,heartData])
 
 	return (
 		<StPost>
@@ -40,7 +52,7 @@ const BoCard = ({ card }) => {
 				</div>
 
 				<StBtn>
-					<Button theme="like">
+					<Button theme="like" onClick={()=>dispatch(__heart(card.id))}>
 						<FontAwesomeIcon
 							icon={faHeart}
 							size="lg"
