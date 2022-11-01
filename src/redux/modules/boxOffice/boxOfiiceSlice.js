@@ -7,6 +7,7 @@ export const __getBoxOffice = createAsyncThunk(
     async (payload,thunkAPI) =>{
         try{
             const {data} = await axios.get(`${serverUrl}/movies/index`)
+            console.log(data.data)
            return thunkAPI.fulfillWithValue(data.data)
         }catch(e){
             return thunkAPI.rejectWithValue(e.code)

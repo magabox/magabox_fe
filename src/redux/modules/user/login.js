@@ -14,11 +14,14 @@ export const __loginDB = createAsyncThunk(
 			const accessToken = response.headers.authorization;
 			const refreshToken = response.headers["refresh-token"];
 			const userRole = response.headers["user-role"];
+			const username = response.headers.username
+			console.log(username)
 			// console.log("res", response);
 			if (response.status === 200 || response.status === 201) {
 				window.localStorage.setItem("accessToken", accessToken);
 				window.localStorage.setItem("refreshToken", refreshToken);
 				window.localStorage.setItem("user-role", userRole);
+				window.localStorage.setItem("user-name", username)
 				alert(response.data.data);
 				return thunkAPI.fulfillWithValue(response.data);
 			}
