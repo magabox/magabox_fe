@@ -14,7 +14,7 @@ const MovieAdmin = () => {
 	const location = useLocation();
 
 	const card = location.state.card;
-	console.log(card);
+	// console.log(card.id);
 	// const test = useSelector(state => state.boxoffice.boxoffices);
 	// console.log(test);
 	// useEffect(() => {
@@ -45,7 +45,7 @@ const MovieAdmin = () => {
 		const formData = new FormData();
 
 		// 이걸 합친게 바로 위 코드임
-		formData.append("image", imageToUpload);
+		formData.append("file", imageToUpload);
 		formData.append("title", data.title);
 		formData.append("summary", data.summary);
 		formData.append("runtime", data.runtime);
@@ -58,6 +58,7 @@ const MovieAdmin = () => {
 		axios
 			.put(`${serverUrl}/movies/${card.id}`, formData, {
 				headers: {
+					// id: card.id,
 					Authorization: accessToken,
 					refreshToken,
 					userRole,

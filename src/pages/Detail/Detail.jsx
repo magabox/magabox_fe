@@ -1,7 +1,15 @@
 import React from "react";
-
+import Banner from "./Banner";
+import ContentData from "./ContentData";
+import MoviePoster from "./MoviePoster";
 const Detail = () => {
-  return <div>Detailgg</div>;
+	return (
+		<>
+			<Banner />
+			<ContentData />
+			<MoviePoster />
+		</>
+	);
 };
 
 export default Detail;
