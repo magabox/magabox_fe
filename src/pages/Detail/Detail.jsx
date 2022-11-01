@@ -1,7 +1,9 @@
 import React from "react";
+import styled from "styled-components";
+import Banner from "./Banner";
 
 const Detail = () => {
-  return <div>Detailgg</div>;
+	return <Banner />;
 };
 
 export default Detail;

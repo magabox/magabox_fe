@@ -47,7 +47,7 @@ const MovieAdmin = () => {
 			})
 			.then(function (response) {
 				alert("등록되었습니다.");
-				window.location.replace("/");
+				// window.location.replace("/");
 			})
 			.catch(function (error) {
 				alert("등록에 실패했습니다");

@@ -236,6 +236,7 @@ const StForm = styled.form`
 		height: 45px;
 		cursor: pointer;
 		position: relative;
+		margin: 0 auto;
 		background-color: #f7f8f9;
 		@media screen and (min-width: 780px) {
 		}
