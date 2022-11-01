@@ -1,28 +1,130 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+
 const ContentData = () => {
 	const data = [
 		{
 			id: 0,
 			title: "주요정보",
-			description: "",
+			description: (
+				<>
+					{" "}
+					<div>
+						<InfoContent>
+							<p>상영타입 : 2D(자막)</p>
+
+							<InfoLine>
+								<p>감독&nbsp;: 제임스 맥티그</p>
+								<p>장르&nbsp;: 액션 / 132 분</p>
+								<p>등급&nbsp;: 15세이상관람가</p>
+								<p>개봉일&nbsp;: 2022.11.02(재개봉)</p>
+							</InfoLine>
+							<p>출연진&nbsp;: 나탈리 포트만, 휴고 위빙</p>
+						</InfoContent>
+					</div>
+					<MovieGraphWrap>
+						<MovieGraph>
+							<Col>
+								<dl>
+									<dt>관람포인트</dt>
+									<dd>&nbsp;</dd>
+								</dl>
+								<Graph>
+									<canvas></canvas>
+									<img
+										src="	https://www.megabox.co.kr/static/pc/images/movie/no-graph01.jpg"
+										alt=""
+									/>
+								</Graph>
+							</Col>
+						</MovieGraph>
+						<MovieGraph>
+							<Col>
+								<dl>
+									<dt>실관람 평점</dt>
+								</dl>
+								<Graph>
+									<canvas></canvas>
+									<img
+										src="https://www.megabox.co.kr/static/pc/images/movie/no-graph02.jpg"
+										alt=""
+									/>
+								</Graph>
+								<div>
+									<dl>
+										<dt>예매율</dt>
+										<dd>
+											<span>0%</span>
+										</dd>
+									</dl>
+								</div>
+							</Col>
+						</MovieGraph>
+						<MovieGraph>
+							<Col>
+								<dl>
+									<dt>누적관객수</dt>
+									<dd>0</dd>
+								</dl>
+								<Graph>
+									<canvas></canvas>
+									<img
+										src="https://www.megabox.co.kr/static/pc/images/movie/no-graph04.jpg"
+										alt=""
+									/>
+								</Graph>
+							</Col>
+						</MovieGraph>
+					</MovieGraphWrap>
+					<TitH2>아직 남겨진 한줄평이 없어요.</TitH2>
+					<CommentWrap>
+						<ul>
+							<li>
+								<div>
+									<ImgWrap>
+										<Img>
+											<img
+												src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png"
+												alt=""
+											/>
+										</Img>
+										<p>MEGABOX</p>
+									</ImgWrap>
+								</div>
+								<StoryBox>
+									<div>
+										첫번째
+										<span> 관람평의 </span>
+										주인공이 되어 보세요.
+									</div>
+									<div>
+										<button>
+											<i></i>
+											관람평쓰기
+										</button>
+									</div>
+								</StoryBox>
+							</li>
+						</ul>
+					</CommentWrap>
+				</>
+			),
 		},
 		{
 			id: 1,
 			title: "실관람평",
-			description:
-				"제작중입니당제작중입니당제작중입니당제작중입니당제작중입니당제작중입니당제작중입니당제작중입니당제작중입니당",
+			description: "제작중입니당",
 		},
 		{
 			id: 2,
 			title: "무비포스트",
-			description: "제작중입니당제작중입니당제작중입니당",
+			description: "미완성입니다",
 		},
 		{
 			id: 3,
 			title: "예고편/스틸컷",
-			description: "제작중입니당",
+			description: "예고편미완성입니당",
 		},
 	];
 	const [index, setIndex] = useState(0);
@@ -48,106 +150,7 @@ const ContentData = () => {
 							.filter(item => index === item.id)
 							.map(item => (
 								<>
-									<div>
-										{item.description}
-										<InfoContent>
-											<p>상영타입 : 2D(자막)</p>
-
-											<InfoLine>
-												<p>감독&nbsp;: 제임스 맥티그</p>
-												<p>장르&nbsp;: 액션 / 132 분</p>
-												<p>등급&nbsp;: 15세이상관람가</p>
-
-												<p>개봉일&nbsp;: 2022.11.02(재개봉)</p>
-											</InfoLine>
-											<p>출연진&nbsp;: 나탈리 포트만, 휴고 위빙</p>
-										</InfoContent>
-									</div>
-									<MovieGraphWrap>
-										<MovieGraph>
-											<Col>
-												<dl>
-													<dt>관람포인트</dt>
-													<dd>&nbsp;</dd>
-												</dl>
-												<Graph>
-													<canvas></canvas>
-													<img
-														src="	https://www.megabox.co.kr/static/pc/images/movie/no-graph01.jpg"
-														alt=""
-													/>
-												</Graph>
-											</Col>
-										</MovieGraph>
-										<MovieGraph>
-											<Col>
-												<dl>
-													<dt>실관람 평점</dt>
-												</dl>
-												<Graph>
-													<canvas></canvas>
-													<img
-														src="https://www.megabox.co.kr/static/pc/images/movie/no-graph02.jpg"
-														alt=""
-													/>
-												</Graph>
-												<div>
-													<dl>
-														<dt>예매율</dt>
-														<dd>
-															<span>0%</span>
-														</dd>
-													</dl>
-												</div>
-											</Col>
-										</MovieGraph>
-										<MovieGraph>
-											<Col>
-												<dl>
-													<dt>누적관객수</dt>
-													<dd>0</dd>
-												</dl>
-												<Graph>
-													<canvas></canvas>
-													<img
-														src="https://www.megabox.co.kr/static/pc/images/movie/no-graph04.jpg"
-														alt=""
-													/>
-												</Graph>
-											</Col>
-										</MovieGraph>
-									</MovieGraphWrap>
-									<TitH2>아직 남겨진 한줄평이 없어요.</TitH2>
-									<CommentWrap>
-										<ul>
-											<li>
-												<div>
-													<ImgWrap>
-														<Img>
-															<img
-																src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png"
-																alt=""
-															/>
-														</Img>
-														<p>MEGABOX</p>
-													</ImgWrap>
-												</div>
-												<StoryBox>
-													<div>
-														첫번째
-														<span> 관람평의 </span>
-														주인공이 되어 보세요.
-													</div>
-													<div>
-														<button>
-															<i></i>
-															관람평쓰기
-														</button>
-													</div>
-												</StoryBox>
-											</li>
-										</ul>
-									</CommentWrap>
+									<div>{item.description}</div>
 								</>
 							))}
 					</section>

@@ -17,17 +17,17 @@ import { useEffect } from "react";
 import { __getBoxOffice } from "../../redux/modules/boxOffice/boxOfiiceSlice";
 
 const BoCard = ({ card }) => {
-    const dispatch = useDispatch();
-	const { imageUrl, totalHeartCount,heartList } = card;
-    const heartData = useSelector((state)=>state.heart.heartData);
+	const dispatch = useDispatch();
+	const { imageUrl, totalHeartCount, heartList } = card;
+	const heartData = useSelector(state => state.heart.heartData);
 	// console.log("card", card);
 	const userRole = localStorage.getItem("user-role");
-    const username = localStorage.getItem("user-name");
-    const filter = heartList.filter((heart)=>(username = heart.username));
+	const username = localStorage.getItem("user-name");
+	// const filter = heartList.filter(heart => (username = heart.username));
 
-    useEffect(()=>{
-        dispatch(__getBoxOffice())
-    },[dispatch,heartData])
+	useEffect(() => {
+		dispatch(__getBoxOffice());
+	}, [dispatch, heartData]);
 
 	return (
 		<StPost>
@@ -56,7 +56,7 @@ const BoCard = ({ card }) => {
 					</div>
 				</Link>
 				<StBtn>
-					<Button theme="like" onClick={()=>dispatch(__heart(card.id))}>
+					<Button theme="like" onClick={() => dispatch(__heart(card.id))}>
 						<FontAwesomeIcon
 							icon={faHeart}
 							size="lg"

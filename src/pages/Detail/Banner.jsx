@@ -11,7 +11,7 @@ const Banner = () => {
 						<TitleE>V For Vendetta</TitleE>
 						<ButtonWrap>
 							<LikeBtn>
-								<i class="iconset ico-heart-line"></i>
+								<i></i>
 								<span title="보고싶어 한 명수" id="intrstCnt">
 									366
 								</span>
