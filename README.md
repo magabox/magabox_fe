@@ -1,4 +1,4 @@
-![logo](https://img.megabox.co.kr/static/pc/images/common/ci/logo-white_new2.png)
+<!-- ![logo](https://img.megabox.co.kr/static/pc/images/common/ci/logo-white_new2.png) -->
 
 ## 🙌 프로젝트 소개
 
