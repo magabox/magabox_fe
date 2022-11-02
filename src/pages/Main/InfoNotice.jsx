@@ -37,7 +37,7 @@ export const InfoWrap = styled.div`
 	width: 1100px;
 	height: 62px;
 	margin: 0 auto;
-	padding: 0 105px 0 95px;
+	padding: 0 5px 0 5px;
 	display: flex;
 	align-items: center;
 	a {
@@ -69,7 +69,7 @@ export const InfoWrap = styled.div`
 		background-color: #e2e2e2;
 	}
 	p:nth-child(3) {
-		margin-left: 337px;
+		margin-left: 300px;
 	}
 	p:last-child {
 		position: relative;
