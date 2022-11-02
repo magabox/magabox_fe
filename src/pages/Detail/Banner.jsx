@@ -1,19 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { __getBoxOffice, __getByMovieId } from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import {
+	__getBoxOffice,
+	__getByMovieId,
+} from "../../redux/modules/boxOffice/boxOfiiceSlice";
 import { useParams } from "react-router-dom/dist";
 import { useEffect } from "react";
 
-const Banner = ({detailData,heartData}) => {
+const Banner = ({ detailData, heartData }) => {
 	const dispatch = useDispatch();
-	const details = detailData.data
-	const {id} = useParams();
-    
-    useEffect(()=>{
-      dispatch(__getByMovieId(id))
-      dispatch(__getBoxOffice());
-    },[dispatch])
+	const details = detailData.data;
+	const { id } = useParams();
+
+	useEffect(() => {
+		dispatch(__getByMovieId(id));
+		dispatch(__getBoxOffice());
+	}, [dispatch]);
 
 	return (
 		<>
@@ -37,7 +40,6 @@ const Banner = ({detailData,heartData}) => {
 								</a>
 							</div>
 						</ButtonWrap>
-
 					</Content>
 					<Info>
 						<Score>
@@ -95,7 +97,6 @@ const Banner = ({detailData,heartData}) => {
 };
 
 export default Banner;
-
 
 export const Reserve = styled.div`
 	overflow: hidden;
@@ -442,7 +443,6 @@ export const LikeBtn = styled.button`
 		}
 		span {
 			color: #222;
-
 		}
 	}
 `;

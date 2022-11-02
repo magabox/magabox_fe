@@ -45,8 +45,6 @@ const BoCard = ({ card }) => {
 	useEffect(() => {
 		dispatch(__getBoxOffice());
 	}, [dispatch, heartData]);
-    
-
 
 	return (
 		<StPost>

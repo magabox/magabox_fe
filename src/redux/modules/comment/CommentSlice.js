@@ -29,6 +29,47 @@ export const __AddComment = createAsyncThunk(
     }
 )
 
+export const __UpdateComment = createAsyncThunk(
+    "UPDATE_COMMENT",
+    async (payload,thunkAPI)=>{
+        try{
+            const {data} = await axios.put(`${serverUrl}/comments/{commentId}`,payload,
+            {headers: {
+                Authorization: accessToken,
+                refreshToken,
+                userRole,
+                "Content-Type": "application/json",
+            }}
+            
+            )
+            return thunkAPI.fulfillWithValue(data)
+        }catch(e){
+            return thunkAPI.rejectWithValue(e.code)
+        }
+    }
+)
+
+const __DeleteComment = createAsyncThunk(
+    "DELETE_COMMENT",
+    async (payload,thunkAPI)=>{
+        try{
+            const {data} = await axios.delete(`${serverUrl}/comments/{commentId}`,
+            {headers : {
+                Authorization : accessToken,
+                refreshToken,
+                userRole,
+                "Content-Type" : "application/json",
+            }}
+            
+            )
+            return thunkAPI.fulfillWithValue(data)
+        }catch(e){
+            return thunkAPI.rejectWithValue(e.code)
+        }
+    }
+
+)
+
 const initialState = {
     isLoading : false,
     comments : []
@@ -48,6 +89,29 @@ const commentSlice = createSlice({
         },
         [__AddComment.rejected] : (state,action)=>{
             state.isLoading = false
+        },
+        [__UpdateComment.pending]:(state,action)=>{
+            state.isLoading = true
+        },
+        [__UpdateComment.fulfilled]:(state,action)=>{
+            const target = state.comments.findIndex((comment)=>{
+               return comment.id === action.payload.id
+            });
+            state.comments.splice(target,1,action.payload)
+            state.isLoading = false
+        },
+        [__UpdateComment.rejected]:(state,action)=>{
+            state.isLoading = false
+        },
+        [__DeleteComment.pending]:(state,action)=>{
+            state.isLoading = true
+        },
+        [__DeleteComment.fulfilled]:(state,action)=>{
+            state.isLoading = false
+            const target = state.comments.filter((comment)=>{
+                return comment.id !== action.payload.id
+            })
+            state.comments = target;
         }
     }
 })
