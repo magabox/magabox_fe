@@ -62,8 +62,10 @@ export const Slide = styled.div`
 	margin-right: 16px;
 	height: 100%;
 	position: relative;
+	z-index: 1;
 	a {
 		position: relative;
+		z-index: 2;
 		overflow: hidden;
 		display: block;
 		float: left;
@@ -78,6 +80,7 @@ export const Slide = styled.div`
 		background-size: 170px 340px;
 		box-shadow: 5px 5px 10px 0px rgb(0 0 0 / 20%);
 		transition: all 0.5s;
+		cursor: pointer;
 	}
 	:hover a {
 		background-position: 0 bottom;
