@@ -1,10 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { serverUrl } from "../../api"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { __getBoxOffice } from "../boxOffice/boxOfiiceSlice";
-
-
+import { serverUrl } from "../../api";
 
 const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
@@ -13,15 +9,11 @@ const userRole = localStorage.getItem("user-role");
 
 
 
-
-
-
-
-export const __heart = createAsyncThunk(
-    "HEART",
+export const __AddComment = createAsyncThunk(
+    "ADD_COMMENT",
     async (payload,thunkAPI)=>{
         try{
-            const {data} = await axios.post(`${serverUrl}/hearts/${payload}`,payload,
+            const {data} = await axios.post(`${serverUrl}/comments/${payload.id}`,payload = {rating : payload.rating, comment : payload.comment},
             {headers: {
                 Authorization: accessToken,
                 refreshToken,
@@ -29,38 +21,35 @@ export const __heart = createAsyncThunk(
                 "Content-Type": "application/json",
             }}
             )
-            console.log(data)
-            return thunkAPI.fulfillWithValue(data)
+            return thunkAPI.fulfillWithValue(payload)
         }catch(e){
             return thunkAPI.rejectWithValue(e.code)
         }
     }
 )
 
-
 const initialState = {
     isLoading : false,
-    error : null,
-    heartData : []
+    comments : []
 }
-const heartSlice = createSlice({
-    name : "heart",
+
+const commentSlice = createSlice({
+    name : "comment",
     initialState,
     reducers : {},
     extraReducers : {
-        [__heart.pending]:(state,actioin)=>{
+        [__AddComment.pending] : (state,action)=>{
             state.isLoading = true
         },
-        [__heart.fulfilled]:(state,action)=>{
+        [__AddComment.fulfilled] : (state,action)=>{
             state.isLoading = false
-            state.heartData = action.payload
-
+            state.comments.push(action.payload)
         },
-        [__heart.rejected]:(state,action)=>{
+        [__AddComment.rejected] : (state,action)=>{
             state.isLoading = false
         }
     }
 })
 
-export const {} = heartSlice.actions
-export default heartSlice.reducer
+export const {} = commentSlice.actions
+export default commentSlice.reducer

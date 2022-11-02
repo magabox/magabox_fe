@@ -1,19 +1,36 @@
 import React from "react";
 import styled from "styled-components";
-const Banner = () => {
+import { useDispatch, useSelector } from "react-redux";
+import {
+	__getBoxOffice,
+	__getByMovieId,
+} from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import { useParams } from "react-router-dom/dist";
+import { useEffect } from "react";
+
+const Banner = ({ detailData, heartData }) => {
+	const dispatch = useDispatch();
+	const details = detailData.data;
+	const { id } = useParams();
+
+	useEffect(() => {
+		dispatch(__getByMovieId(id));
+		dispatch(__getBoxOffice());
+	}, [dispatch]);
+
 	return (
 		<>
 			<BannerWrap>
 				<BackGround>
 					<Content>
 						<Dday>예매 D-1</Dday>
-						<Title>[워너필소] 브이 포 벤데타</Title>
-						<TitleE>V For Vendetta</TitleE>
+						<Title>{details?.title}</Title>
+						{/* <TitleE>V For Vendetta</TitleE> */}
 						<ButtonWrap>
 							<LikeBtn>
 								<i></i>
 								<span title="보고싶어 한 명수" id="intrstCnt">
-									366
+									{details?.totalHeartCount}
 								</span>
 							</LikeBtn>
 							<div>
@@ -64,10 +81,7 @@ const Banner = () => {
 					</Info>
 					<Poster>
 						<div>
-							<img
-								src="https://img.megabox.co.kr/SharedImg/2022/09/05/pshGbPkxbpD93qWajPgJMo71BymEmj1Q_420.jpg"
-								alt="poster"
-							/>
+							<img src={details?.imageUrl} alt="" />
 						</div>
 					</Poster>
 					<Reserve>
@@ -80,6 +94,7 @@ const Banner = () => {
 };
 
 export default Banner;
+
 export const Reserve = styled.div`
 	overflow: hidden;
 	display: block;
