@@ -7,16 +7,16 @@ const BenefitAd = () => {
 				<BannerLeft>
 					<a href="javacript:void(0)">
 						<img
-							src="https://img.megabox.co.kr/SharedImg/event/2022/10/24/T5YqXqWTssWD85CKz2eINznOG2gD1jqh.jpg"
-							alt="[메가박스X더쎈카드] 더쎈카드 연말정산 이벤트"
+							src="https://img.megabox.co.kr/SharedImg/event/2022/11/01/AXU0jbiLo1AFnu8WheuWxrLkfSUdWtwq.jpg"
+							alt="<블랙 팬서: 와칸다 포에버> 얼리버드 스페셜 예매 이벤트"
 						/>
 					</a>
 				</BannerLeft>
 				<BannerRight>
 					<a href="javacript:void(0)">
 						<img
-							src="https://img.megabox.co.kr/SharedImg/event/2022/10/24/aCeSj4Dqi7WmoSmAyVAfgCs2ESjtSLdp.jpg"
-							alt="[메가박스X더쎈카드] 더쎈카드 연말정산 이벤트"
+							src="https://img.megabox.co.kr/SharedImg/event/2022/05/31/4pLdCNd6S9Vl2JGPW4Q68KSPJ28axiUc.jpg"
+							alt="[대한항공X메가박스] SKYPASS 회원 할인 프로모션"
 						/>
 					</a>
 				</BannerRight>

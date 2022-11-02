@@ -24,6 +24,7 @@ export const Bg = styled.div`
 	min-height: 840px;
 	padding: 0;
 	background-color: #252451;
+	overflow: hidden;
 `;
 export const Layout = styled.div`
 	width: 1100px;
@@ -37,6 +38,7 @@ export const TitleWrap = styled.div`
 	display: flex;
 	justify-content: space-between;
 	h2 {
+		margin-bottom: 40px;
 		font-size: 2em;
 		color: #fff;
 	}

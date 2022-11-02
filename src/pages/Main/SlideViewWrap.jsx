@@ -10,7 +10,6 @@ const SlideViewWrap = () => {
 							<img
 								src="https://img.megabox.co.kr/SharedImg/BnftMng/2022/10/31/oZ5PqAP5shHscWh083VgBufs5pHaHLr5.jpg"
 								alt=""
-								onerror="noImg(this, 'main');"
 							></img>
 						</a>
 					</Txt>
@@ -19,7 +18,6 @@ const SlideViewWrap = () => {
 							<img
 								src="https://img.megabox.co.kr/SharedImg/BnftMng/2022/10/31/ZcoQj7lRqmXpVLO2cA5V7ejjUGtlbN0I.jpg"
 								alt=""
-								onerror="noImg(this, 'main');"
 							/>
 						</a>
 					</Bg>
