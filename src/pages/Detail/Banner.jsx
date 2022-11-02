@@ -66,7 +66,7 @@ const Banner = () => {
 						<div>
 							<img
 								src="https://img.megabox.co.kr/SharedImg/2022/09/05/pshGbPkxbpD93qWajPgJMo71BymEmj1Q_420.jpg"
-								alt=""
+								alt="poster"
 							/>
 						</div>
 					</Poster>

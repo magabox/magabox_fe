@@ -33,7 +33,7 @@ const ContentData = () => {
 									<canvas></canvas>
 									<img
 										src="	https://www.megabox.co.kr/static/pc/images/movie/no-graph01.jpg"
-										alt=""
+										alt="graph01"
 									/>
 								</Graph>
 							</Col>
@@ -47,7 +47,7 @@ const ContentData = () => {
 									<canvas></canvas>
 									<img
 										src="https://www.megabox.co.kr/static/pc/images/movie/no-graph02.jpg"
-										alt=""
+										alt="graph02"
 									/>
 								</Graph>
 								<div>
@@ -70,7 +70,7 @@ const ContentData = () => {
 									<canvas></canvas>
 									<img
 										src="https://www.megabox.co.kr/static/pc/images/movie/no-graph04.jpg"
-										alt=""
+										alt="graph04"
 									/>
 								</Graph>
 							</Col>
@@ -85,7 +85,7 @@ const ContentData = () => {
 										<Img>
 											<img
 												src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png"
-												alt=""
+												alt="mega-profile"
 											/>
 										</Img>
 										<p>MEGABOX</p>

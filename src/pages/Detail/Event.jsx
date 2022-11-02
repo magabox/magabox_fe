@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import Ad from "../Detail/Ad";
 const Event = () => {
 	return (
 		<>
@@ -16,37 +16,24 @@ const Event = () => {
 						<li>
 							<img
 								src="https://img.megabox.co.kr/SharedImg/event/2022/09/07/4YA64WfakkCWtf7wx650jit7HAAUovnZ.png"
-								alt=""
+								alt="event1"
 							/>
 						</li>
 						<li>
 							<img
 								src="https://img.megabox.co.kr/SharedImg/event/2022/10/28/CcKcP34nZVqd9KlEqrik7LqOvju2h6xl.jpg"
-								alt=""
+								alt="event2"
 							/>
 						</li>
 					</ul>
 				</div>
 			</Inner>
-			<Ad>
-				<img
-					src="	https://mlink-cdn.netinsight.co.kr/2022/08/19/87abb268e3e94481732c6f5599baae99.jpg"
-					alt=""
-				/>
-			</Ad>
+			<Ad />
 		</>
 	);
 };
 
 export default Event;
-
-export const Ad = styled.div`
-	position: relative;
-	display: block;
-	text-align: center;
-	width: 100%;
-	background-color: #0e0b20;
-`;
 
 export const Inner = styled.div`
 	width: 1100px;
