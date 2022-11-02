@@ -128,7 +128,7 @@ const ContentData = ({detailData}) => {
 						<StProfile style={{marginTop : "30px"}}>
 							<img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png"/>
 						<StId>
-							{user.replace(/.{2}$/, "**")}
+							{user?.replace(/.{2}$/, "**")}
 						</StId>
 						</StProfile>
 						<Flex wd="100%" dir="row" bg="#f8f8fa;" mg="30px 0 0 0" brd="0 10px 10px 10px">

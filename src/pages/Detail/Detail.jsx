@@ -31,14 +31,13 @@ const Detail = () => {
 
     // console.log(detailData)
 	return (
-		<>{modal ? <ModalContainer>
+		<>{modal ?<> <ModalContainer/>
         <Banner detailData={detailData} heartData={heartData}/>
         <ContentData detailData={detailData}/>
         <MoviePoster />
         <Event />
         <Footer />
-
-      </ModalContainer> : 
+        </> : 
       <>
         <Banner detailData={detailData} heartData={heartData}/>
         <ContentData detailData={detailData}/>
