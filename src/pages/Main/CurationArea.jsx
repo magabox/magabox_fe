@@ -179,7 +179,7 @@ export const BtnLeft = styled.div`
 		width: 100%;
 		height: 50px;
 		line-height: 48px;
-		font-size: 1.3333em;
+		font-size: 1.2em;
 		padding: 0;
 		border: 1px solid #fff;
 		background-color: transparent;
@@ -191,7 +191,7 @@ export const BtnRight = styled.div`
 		width: 100%;
 		height: 50px;
 		line-height: 48px;
-		font-size: 1.3333em;
+		font-size: 1.2em;
 		background: #037b94;
 	}
 `;

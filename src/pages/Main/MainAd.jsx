@@ -21,4 +21,5 @@ export const AdWrap = styled.div`
 	text-align: center;
 	width: 100%;
 	background-color: #0e0b20;
+	cursor: pointer;
 `;

@@ -10,7 +10,7 @@ const Benefit = () => {
 			<Layout>
 				<TitleWrap>
 					<h2>혜택</h2>
-					<a href="javascript:void(0)"></a>
+					<a></a>
 				</TitleWrap>
 				<SliderWrap>
 					<SlideViewWrap />
