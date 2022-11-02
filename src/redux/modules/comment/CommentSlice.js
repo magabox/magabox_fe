@@ -13,7 +13,8 @@ export const __AddComment = createAsyncThunk(
     "ADD_COMMENT",
     async (payload,thunkAPI)=>{
         try{
-            const {data} = await axios.post(`${serverUrl}/comments/${payload.id}`,payload = {rating : payload.rating, comment : payload.comment},
+            const {id, rating, comment} = payload
+            const {data} = await axios.post(`${serverUrl}/comments/${id}`,{rating,comment},
             {headers: {
                 Authorization: accessToken,
                 refreshToken,

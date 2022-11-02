@@ -31,7 +31,7 @@ const Banner = ({detailData,heartData}) => {
 								</span>
 							</LikeBtn>
 							<div>
-								<a href="#">
+								<a>
 									<i></i>
 									공유하기
 								</a>

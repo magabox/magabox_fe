@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as Regular } from "@fortawesome/free-regular-svg-icons";
@@ -17,6 +17,7 @@ import { __heart } from "../../redux/modules/heartSlice.js/heartSlice";
 import { useEffect } from "react";
 import { __getBoxOffice, __getByMovieId } from "../../redux/modules/boxOffice/boxOfiiceSlice";
 import { useParams } from "react-router-dom/dist";
+import { loginAction } from "../../redux/modules/user/login";
 
 const BoCard = ({ card }) => {
 	const dispatch = useDispatch();
@@ -25,6 +26,21 @@ const BoCard = ({ card }) => {
 	const userRole = localStorage.getItem("user-role");
 	const username = localStorage.getItem("user-name");
 	const filter = heartList.filter(heart => username === heart.username);
+    const isLogin = useSelector(state => state.login.isLogin);
+	const [ready, setReady] = useState(undefined);
+    const { handleLoginDispatch } = loginAction;
+	const sample = () => {
+		const loggedin = localStorage.getItem("isLogin");
+		if (loggedin) {
+			dispatch(handleLoginDispatch());
+		}
+
+		setReady("yes");
+	};
+
+	useEffect(() => {
+		sample();
+	}, [isLogin]);
 
 	useEffect(() => {
 		dispatch(__getBoxOffice());
@@ -43,10 +59,14 @@ const BoCard = ({ card }) => {
 							<StFlexWrap>
 								<div>
 									<p>
-										{userRole === "ROLE_ADMIN" ? (
-											<Link to={`/movie/${card.id}`} state={{ card }}>
-												<span>수정/삭제</span>
-											</Link>
+										{isLogin ? (
+											<>
+												{userRole === "ROLE_ADMIN" ? (
+													<Link to={`/movie/${card.id}`} state={{ card }}>
+														<span>수정/삭제</span>
+													</Link>
+												) : null}
+											</>
 										) : null}
 									</p>
 									<p>

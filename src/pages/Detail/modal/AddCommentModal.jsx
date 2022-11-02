@@ -36,12 +36,17 @@ const ModalContainer = () => {
 
 	const addComment = () =>{
 		if(content.trim() === '' || rating.trim() === ''){
-			alert("모든 항목을 채워주세요")
+			alert("모든 항목을 올바른 형식으로 채워주세요")
+		}else if(rating >10){
+			alert("점수는 1~10까지만 입력가능합니다")
 		}else{
-			dispatch(__AddComment({...comment, rating : rating, comment : content, id : id}))
+			dispatch(__AddComment({...comment, rating : parseInt(rating), comment : content, id : id}))
 			setRating('')
 			setContent('')
 		}
+		
+		
+		
 	}
 	// y축 스크롤 없애는 방법
 	useEffect(() => {
@@ -70,7 +75,7 @@ const ModalContainer = () => {
                     <p style={{fontSize : "24px", textAlign : "center"}}>영화 어떠셨나요???</p>
                 </Flex>
                 <Flex wd="460px" ht="250px" bg="#f3f4f6" mg="0 auto" br="10" ai="center">
-                    <input value={rating} onChange={changeRating} placeholder="1~10까지의 점수를 입력해주세요" style={{width : "300px", height : "30px",border : "none" ,marginTop : "20px", borderRadius : "5px" }}  type="number" min="1" max="10"/>
+                    <input value={rating} onChange={changeRating} placeholder="1~10까지의 점수를 입력해주세요" style={{width : "300px", height : "30px",border : "none" ,marginTop : "20px", borderRadius : "5px" }}  type="number" min={1} max={10}/>
                     <textarea value={content} onChange={changeContent} placeholder="댓글 내용을 작성해주세요" style={{minWidth : "350px", minHeight : "150px", marginTop:"20px", border : "none"}}/>
                 </Flex>
                 <Flex>

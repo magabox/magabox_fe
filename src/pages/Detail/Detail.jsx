@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom/dist";
 import styled from "styled-components";
 import { useState } from "react";
 import ModalContainer from "./modal/AddCommentModal";
+import Bubble from "../../elem/bubble/Bubble";
 const Detail = () => {
 	const dispatch = useDispatch();
 	const detailData = useSelector(state => state?.boxoffice?.detailData);
@@ -44,6 +45,7 @@ const Detail = () => {
 				</>
 			) : (
 				<>
+          <Bubble/>
 					<Banner detailData={detailData} heartData={heartData} />
 					<ContentData detailData={detailData} />
 					<MoviePoster />

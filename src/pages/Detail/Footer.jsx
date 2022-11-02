@@ -114,6 +114,7 @@ export const Top = styled.div`
 		display: flex;
 		align-items: center;
 		li {
+			cursor: pointer;
 			font-size: 0.8667em;
 			margin-right: 14px;
 			color: #777;
