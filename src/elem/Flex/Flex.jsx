@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Flex = ({children,...props}) => {
   return (
-    <StFlex {...props} dir="row">{children}</StFlex>
+    <StFlex {...props}>{children}</StFlex>
   )
 }
 
@@ -25,8 +25,11 @@ export const StFlex = styled.div`
     border-radius : ${({brd})=> brd};
     top:${({top})=>`${top}px`};
     left:${({left})=>`${left}px`};
-    position : ${({ps})=>ps}
-    z-index : ${({zi})=>zi}
+    position : ${({ps})=>ps};
+    z-index : ${({zi})=>zi};
+    color : ${({color})=>color};
+    min-height : ${({mh})=>mh};
+    max-height : ${({mxh})=>mxh}
 
 
 
