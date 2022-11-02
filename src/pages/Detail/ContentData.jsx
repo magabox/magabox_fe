@@ -1,21 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import Flex from "../../elem/Flex/Flex";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch,useSelector } from "react-redux";
+import {openModal} from "../../redux/modules/modal/modalSlice"
 
-const ContentData = () => {
+const ContentData = ({detailData}) => {
+	const dispatch = useDispatch();
+
+	const user = localStorage.getItem("user-name")
+
+	const [modal,setModal] = useState(useSelector((state)=>state?.modal?.isOpen));
+
 	const data = [
 		{
 			id: 0,
 			title: "주요정보",
 			content: (
 				<>
+
 					<div>
 						<InfoContent>
+							<StSum>
+								{detailData?.data?.summary}
+							</StSum>
 							<p>상영타입 : 2D(자막)</p>
 
 							<InfoLine>
 								<p>감독&nbsp;: 제임스 맥티그</p>
-								<p>장르&nbsp;: 액션 / 132 분</p>
+								<p>장르&nbsp;: 액션 / {detailData?.data?.runtime} 분</p>
 								<p>등급&nbsp;: 15세이상관람가</p>
 								<p>개봉일&nbsp;: 2022.11.02(재개봉)</p>
 							</InfoLine>
@@ -98,15 +114,47 @@ const ContentData = () => {
 										주인공이 되어 보세요.
 									</div>
 									<div>
-										<button>
+										<button onClick={()=>dispatch(openModal(true))}>
 											<i></i>
 											관람평쓰기
 										</button>
 									</div>
+									
 								</StoryBox>
 							</li>
 						</ul>
 					</CommentWrap>
+					<StComment>
+						<StProfile style={{marginTop : "30px"}}>
+							<img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png"/>
+						<StId>
+							{user.replace(/.{2}$/, "**")}
+						</StId>
+						</StProfile>
+						<Flex wd="100%" dir="row" bg="#f8f8fa;" mg="30px 0 0 0" brd="0 10px 10px 10px">
+							<Flex ht="84" dir="row" wd="995">
+								<Flex wd="290" dir="row" ai="center" jc="center" gap="55">
+									<Flex>
+										<span style={{color : "#503396", marginLeft:"15px",paddinLeft:"20px"}}>관람평</span>
+									</Flex>
+									<Flex>
+										<span style={{fontSize:"2.4em",color : "#503396" }}>8</span>
+									</Flex>
+									<Flex br="1px solid #c5c2c2ba" pd="20">
+										<span style={{color : "#503396"}}>배우</span>
+									</Flex>
+								</Flex>
+								<Flex wd="715px" jc="space-between" ai="center" mg="0 0 0 25px">
+									<span>재밌었어요!!</span>
+									<Flex gap="15">
+										<FontAwesomeIcon icon={faThumbsUp} size="lg" style={{cursor : "pointer"}}/>
+										<FontAwesomeIcon icon={faEllipsisVertical} size="lg" style={{marginRight : "20px",cursor : "pointer"}}/>
+									</Flex>
+								</Flex>
+							</Flex>
+
+						</Flex>
+					</StComment>
 				</>
 			),
 		},
@@ -134,7 +182,7 @@ const ContentData = () => {
 					<section>
 						<article>
 							<ul>
-								{data.map(item => (
+								{data?.map(item => (
 									<li
 										key={item.id}
 										onClick={() => setIndex(item.id)}
@@ -154,12 +202,46 @@ const ContentData = () => {
 							))}
 					</section>
 				</TabList>
-			</InnerWrap>
+				
+			</InnerWrap>			
 		</>
 	);
 };
 
 export default ContentData;
+
+
+export const StId = styled.p`
+	display: flex;
+	justify-content: center;
+
+`;
+
+export const StProfile = styled.div`
+	display:flex;
+	flex-direction: column;
+	width:105px;
+	height: 76.43px;
+	justify-content: space-between;
+	align-items: center;
+
+	& img{
+		width:50px;
+		height: 50px;
+	}
+`;
+
+export const StComment = styled.div`
+	width:100%;
+	display: flex;
+`;
+
+export const StSum = styled.div`
+	display: flex;
+	width:1100px;
+	height: 140px;
+	overflow: hidden;
+`;
 
 export const CommentWrap = styled.div`
 	ul {

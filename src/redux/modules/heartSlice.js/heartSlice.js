@@ -29,6 +29,7 @@ export const __heart = createAsyncThunk(
                 "Content-Type": "application/json",
             }}
             )
+            console.log(data)
             return thunkAPI.fulfillWithValue(data)
         }catch(e){
             return thunkAPI.rejectWithValue(e.code)

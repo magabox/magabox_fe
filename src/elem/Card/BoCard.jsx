@@ -15,13 +15,13 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __heart } from "../../redux/modules/heartSlice.js/heartSlice";
 import { useEffect } from "react";
-import { __getBoxOffice } from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import { __getBoxOffice, __getByMovieId } from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import { useParams } from "react-router-dom/dist";
 
 const BoCard = ({ card }) => {
 	const dispatch = useDispatch();
 	const { imageUrl, totalHeartCount, heartList } = card;
-	const heartData = useSelector(state => state.heart.heartData);
-	// console.log("card", card);
+	const heartData = useSelector(state => state.heart);
 	const userRole = localStorage.getItem("user-role");
 	const username = localStorage.getItem("user-name");
 	const filter = heartList.filter(heart => username === heart.username);
@@ -29,6 +29,8 @@ const BoCard = ({ card }) => {
 	useEffect(() => {
 		dispatch(__getBoxOffice());
 	}, [dispatch, heartData]);
+    
+
 
 	return (
 		<StPost>
