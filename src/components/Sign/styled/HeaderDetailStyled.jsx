@@ -67,12 +67,14 @@ export const StCal = styled.img`
 export const StBenefit = styled.img`
 	src: ${props => props.src};
 	width: 30px;
-	height: 18px;
 	margin-left: 60px;
+	height: 39px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 18px;
 	&:hover {
 		text-decoration: none;
 		border-bottom: 3px solid #339eb2;
-		padding-bottom: 17px;
 	}
 `;
 
@@ -86,11 +88,13 @@ export const StStore = styled.img`
 export const StEvent = styled.img`
 	src: ${props => props.src};
 	width: 45px;
-	height: 18px;
+	height: 39px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 18px;
 	&:hover {
 		text-decoration: none;
 		border-bottom: 3px solid #339eb2;
-		padding-bottom: 17px;
 	}
 `;
 
@@ -98,11 +102,13 @@ export const StTheater = styled.img`
 	margin-left: 60px;
 	color: white;
 	width: 32px;
-	height: 18px;
+	height: 39px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 18px;
 	&:hover {
 		text-decoration: none;
 		border-bottom: 3px solid #339eb2;
-		padding-bottom: 17px;
 	}
 `;
 
@@ -110,11 +116,13 @@ export const StReserv = styled.img`
 	margin-left: 60px;
 	color: white;
 	width: 30px;
-	height: 18px;
+	height: 39px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 18px;
 	&:hover {
 		text-decoration: none;
 		border-bottom: 3px solid #339eb2;
-		padding-bottom: 17px;
 	}
 `;
 
@@ -122,12 +130,13 @@ export const StMovie = styled.img`
 	margin-left: 95px;
 	color: white;
 	width: 30px;
-	height: 18px;
+	height: 39px;
 	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 18px;
 	&:hover {
 		text-decoration: none;
 		border-bottom: 3px solid #339eb2;
-		padding-bottom: 17px;
 	}
 `;
 

@@ -34,201 +34,210 @@ export const StLi = styled.li`
 	gap: 10px;
 	cursor: pointer;
 
-	&:hover {
+	/* &:hover {
 		text-decoration: underline;
-	}
+	} */
 `;
 
-
-
 export const StLogo = styled.img`
-	position:absolute;
-	top:23px;
-	width:140px;
+	position: absolute;
+	top: 23px;
+	width: 140px;
 	height: 47px;
-	left : 480px;
+	left: 480px;
 `;
 
 export const StMy = styled.img`
-	src : ${(props)=> props.src};
-	width:18px;
+	src: ${props => props.src};
+	width: 18px;
 	height: 20px;
-	margin-left : 110px;
-
+	margin-left: 110px;
 `;
 
 export const StCal = styled.img`
-	src : ${(props)=> props.src};
-    line-break: inherit;
-    position: absolute;
-    right: 3.8%;
-    top: 5px;
-    width: 35px;
-    height: 35px;
-
+	src: ${props => props.src};
+	line-break: inherit;
+	position: absolute;
+	right: 3.8%;
+	top: 5px;
+	width: 35px;
+	height: 35px;
 `;
 
 export const StBenefit = styled.img`
-	src : ${(props)=> props.src};
-	width:30px;
+	src: ${props => props.src};
+	width: 30px;
 	height: 18px;
-	margin-left : 60px;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
+	margin-left: 60px;
+	height: 38px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 17px;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 3px solid white;
+	}
 `;
 
 export const StStore = styled.img`
-	src : ${(props)=> props.src};
-	width:45px;
+	src: ${props => props.src};
+	width: 45px;
 	height: 18px;
-	margin-left : 60px;
-
+	margin-left: 60px;
 `;
 
 export const StEvent = styled.img`
-	src : ${(props)=> props.src};
-	width:45px;
-	height: 18px;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
+	src: ${props => props.src};
+	width: 45px;
+	height: 38px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 17px;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 3px solid white;
+	}
 `;
 
 export const StTheater = styled.img`
-	src : ${(props)=> props.src};
+	src: ${props => props.src};
 	margin-left: 60px;
-	color:white;
-	width:32px;
-	height: 18px;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
+	color: white;
+	width: 32px;
+	height: 38px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 17px;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 3px solid white;
+	}
 `;
 
 export const StReserv = styled.img`
-	src : ${(props)=> props.src};
+	src: ${props => props.src};
 	margin-left: 60px;
-	color:white;
-	width:30px;
-	height: 18px;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
+	color: white;
+	width: 30px;
+	height: 38px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 17px;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 3px solid white;
+	}
 `;
 
 export const StMovie = styled.img`
-	src : ${(props)=> props.src};
-	margin-left : 95px;
-	color:white;
-	width:30px;
-	height: 18px;
-    position: relative;
-    &:hover{
-        text-decoration:none; border-bottom:3px solid white; padding-bottom:17px;
-    }
-
+	src: ${props => props.src};
+	margin-left: 95px;
+	color: white;
+	width: 30px;
+	height: 38px;
+	position: relative;
+	border-bottom: 3px solid transparent;
+	padding-bottom: 17px;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 3px solid white;
+	}
 `;
 
 export const StSearch = styled.img`
-	src : ${(props)=> props.src};
-	margin-left : 20px;
-	color:white;
-	width:18px;
+	src: ${props => props.src};
+	margin-left: 20px;
+	color: white;
+	width: 18px;
 	height: 18px;
 `;
 
 export const StBars = styled.img`
- 	src : ${(props)=> props.src};
-	 color:white;
-	 width:23px;
-	 height: 18px;
-
+	src: ${props => props.src};
+	color: white;
+	width: 23px;
+	height: 18px;
 `;
 
 export const StDownLeftBox = styled.div`
-	display : flex;
-	width:50%;
+	display: flex;
+	width: 50%;
 	margin-top: 12px;
-	margin-left : 7px;
-	& img{
-		cursor:pointer;
+	margin-left: 7px;
+	& img {
+		cursor: pointer;
 	}
 `;
 
 export const StDownRightBox = styled.div`
-	display : flex;
-	width:50%;
-	margin-left : 330px;
-    margin-top : 12px;
+	display: flex;
+	width: 50%;
+	margin-left: 330px;
+	margin-top: 12px;
 
-	& img{
-		cursor:pointer;
+	& img {
+		cursor: pointer;
 	}
 `;
 
 export const StHeaderContentBox = styled.div`
-	width : 1100px;
-	height : 841.4px;
-	margin : 0 auto;
-	position : relative;
+	width: 1100px;
+	height: 841.4px;
+	margin: 0 auto;
+	position: relative;
 `;
 
 export const StUpLeftBox = styled.div`
 	display: flex;
-	gap : 20px;
+	gap: 20px;
 	font-size: 13px;
 
-    & span{
-        color : #888;
-    }
-	
+	& span {
+		color: #888;
+	}
 `;
 
 export const StUpRightBox = styled.div`
 	display: flex;
-	gap : 20px;
+	gap: 20px;
 	font-size: 13px;
 
-    & span{
-        color : #888;
-    }
-	
+	& span {
+		color: #888;
+	}
 `;
 
 export const StUpBox = styled.div`
-	color:white;
+	color: white;
 	width: 100%;
 	height: 20px;
-	margin-top : 20px;
+	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
-	position:relative;
+	position: relative;
 `;
 
 export const StDownBox = styled.div`
-	color:white;
-	width:100%;
-	height : 50px;
+	color: white;
+	width: 100%;
+	height: 50px;
 	line-height: 70px;
-	display:flex;
+	display: flex;
 	justify-content: space-between;
-	position:relative;
+	position: relative;
 `;
 
 export const StHeaderBox = styled.div`
 	width: 100%;
-	height : 91px;
+	height: 91px;
 	background-color: #000000ff;
-	position : fixed;
-	top : 0;
-	z-index  : 15;
-	border-bottom: 1px solid rgba(255,255,255,.2);
-	display:flex;
+	position: fixed;
+	top: 0;
+	z-index: 15;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	display: flex;
 	flex-direction: column;
-	& span{
-		cursor : pointer;
+	& span {
+		cursor: pointer;
 	}
 `;
-
-
