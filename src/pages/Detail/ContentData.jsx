@@ -16,37 +16,44 @@ const ContentData = ({ detailData }) => {
 	const dispatch = useDispatch();
 
 	const user = localStorage.getItem("user-name");
-	const token = localStorage.getItem("accessToken")
-	const comments = useSelector(state=>state?.movies?.movies?.data?.commentList);
+	const token = localStorage.getItem("accessToken");
+	const comments = useSelector(
+		state => state?.movies?.movies?.data?.commentList,
+	);
 
 	const [modal, setModal] = useState(false);
-	const [open,setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 
-	const handleSubmit = () =>{
-		setOpen(false)
-	}
+	const handleSubmit = () => {
+		setOpen(false);
+	};
 
-	const handleCancle = () =>{
-		setOpen(false)
-	}
+	const handleCancle = () => {
+		setOpen(false);
+	};
 
-	const onClick = () =>{
-		if(token){
-			setOpen(!open)
-		}else{
-			setModal(!modal)
+	const onClick = () => {
+		if (token) {
+			setOpen(!open);
+		} else {
+			setModal(!modal);
 		}
-	
-	}
+	};
 
 	const data = [
 		{
 			id: 0,
 			title: "주요정보",
 			content: (
-				<>	
-					{open && <ModalContainer open={open} handleSubmit={handleSubmit} handleCancle={handleCancle}/>}
-					{modal===true ? <Bubble modal={modal}/> : null}
+				<>
+					{open && (
+						<ModalContainer
+							open={open}
+							handleSubmit={handleSubmit}
+							handleCancle={handleCancle}
+						/>
+					)}
+
 					<div>
 						<InfoContent>
 							<StSum>{detailData?.data?.summary}</StSum>
@@ -147,8 +154,8 @@ const ContentData = ({ detailData }) => {
 						</ul>
 					</CommentWrap>
 					<StComment>
-						{comments?.map((comment)=>{
-							return <Comment comment={comment} key={comment.id}/>
+						{comments?.map(comment => {
+							return <Comment comment={comment} key={comment.id} />;
 						})}
 					</StComment>
 				</>
@@ -173,6 +180,7 @@ const ContentData = ({ detailData }) => {
 	const [index, setIndex] = useState(0);
 	return (
 		<>
+			{modal === true ? <Bubble modal={modal} /> : null}
 			<InnerWrap>
 				<TabList>
 					<section>

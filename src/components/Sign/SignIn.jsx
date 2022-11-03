@@ -186,6 +186,7 @@ const JoinWrap = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+	overflow: hidden;
 `;
 
 const JoinLayout = styled.div`
