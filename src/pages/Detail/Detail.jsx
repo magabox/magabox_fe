@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import ModalContainer from "./modal/AddCommentModal";
 import Bubble from "../../elem/bubble/Bubble";
+import { __getMovie } from "../../redux/modules/Movies/MovieSlice";
 const Detail = () => {
 	const dispatch = useDispatch();
 	const detailData = useSelector(state => state?.boxoffice?.detailData);
@@ -22,38 +23,26 @@ const Detail = () => {
 
 	const { id } = useParams();
 
-	const modal = useSelector(state => state?.modal?.isOpen);
+	const comments = useSelector(state=>state?.movies?.movies);
+	console.log(comments)
 
 	// const [modal,setModal] = useState(useSelector((state)=>state?.modal?.isOpen));
 
 	useEffect(() => {
 		dispatch(__getByMovieId(id));
 		dispatch(__getBoxOffice());
+		dispatch(__getMovie(id))
 	}, [dispatch]);
 
 	// console.log(detailData)
 	return (
 		<>
-			{modal ? (
-				<>
-					<ModalContainer />
 					<Banner detailData={detailData} heartData={heartData} />
 					<ContentData detailData={detailData} />
 					<MoviePoster />
 					<Event />
 					<Footer />
 				</>
-			) : (
-				<>
-          <Bubble/>
-					<Banner detailData={detailData} heartData={heartData} />
-					<ContentData detailData={detailData} />
-					<MoviePoster />
-					<Event />
-					<Footer />
-				</>
-			)}
-		</>
 	);
 };
 

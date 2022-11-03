@@ -4,7 +4,7 @@ import movie from "../modules/movie/movieEdit";
 import boxoffice from "../modules/boxOffice/boxOfiiceSlice";
 import heart from "../modules/heartSlice.js/heartSlice";
 import modal from "../modules/modal/modalSlice"
-import comment from "../modules/comment/CommentSlice"
+import movies from "../modules/Movies/MovieSlice"
 
 const store = configureStore({
 	reducer: {
@@ -13,7 +13,7 @@ const store = configureStore({
 		boxoffice,
 		heart,
 		modal,
-		comment
+		movies
 	},
 	// middleware: getDefaultMiddleware({
 	// 	serializableCheck: false,

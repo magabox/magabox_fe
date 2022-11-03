@@ -6,13 +6,13 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { closeModal } from "../../../redux/modules/modal/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/dist";
-import { __AddComment } from "../../../redux/modules/comment/CommentSlice";
+import { __AddComment } from "../../../redux/modules/Movies/MovieSlice";
 
-const ModalContainer = () => {
+const ModalContainer = ({open, handleSubmit, handleCancle}) => {
 	
 	const initialState = {
 		rating : '',
-		comment : '',
+		content : '',
 		id : ''
 	}
 
@@ -23,8 +23,9 @@ const ModalContainer = () => {
 	const [content,setContent] = useState();
 	const [rating,setRating] = useState();
 	const {id} = useParams();
-	const commentList = useSelector(state=>state?.comment?.comments)
-	console.log(commentList)
+	const data = useSelector(state=>state.movies.movies)
+
+
 
 	const changeContent = (e) =>{
 		setContent(e.target.value)
@@ -35,14 +36,15 @@ const ModalContainer = () => {
 	}
 
 	const addComment = () =>{
-		if(content.trim() === '' || rating.trim() === ''){
+		if(content?.trim() === '' || rating?.trim() === ''){
 			alert("모든 항목을 올바른 형식으로 채워주세요")
 		}else if(rating >10){
 			alert("점수는 1~10까지만 입력가능합니다")
 		}else{
-			dispatch(__AddComment({...comment, rating : parseInt(rating), comment : content, id : id}))
+			dispatch(__AddComment({...comment, rating : parseInt(rating), content : content, id : id}))
 			setRating('')
 			setContent('')
+			handleSubmit()
 		}
 		
 		
@@ -80,7 +82,7 @@ const ModalContainer = () => {
                 </Flex>
                 <Flex>
                     <Flex dir="row" jc="center" ai="center" ht="100px" gap="10">
-                        <button style={{width:"58px",height:"36px", borderRadius : "4px", border : "1px solid #503396", backgroundColor : "white",cursor : "pointer"}} onClick={()=>dispatch(closeModal(false))}>취소</button>
+                        <button style={{width:"58px",height:"36px", borderRadius : "4px", border : "1px solid #503396", backgroundColor : "white",cursor : "pointer"}} onClick={handleCancle}>취소</button>
                         <button onClick={addComment} style={{width:"58px",height:"36px", borderRadius : "4px", border : "1px solid #503396", backgroundColor : "#503396", color: "white",cursor:"pointer"}}>등록</button>
                     </Flex>
                 </Flex>

@@ -7,22 +7,46 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../redux/modules/modal/modalSlice";
+import Comment from "./comment/Comment";
+import Bubble from "../../elem/bubble/Bubble";
+import ModalContainer from "./modal/AddCommentModal";
+import { __AddComment } from "../../redux/modules/Movies/MovieSlice";
 
 const ContentData = ({ detailData }) => {
 	const dispatch = useDispatch();
 
 	const user = localStorage.getItem("user-name");
+	const token = localStorage.getItem("accessToken")
+	const comments = useSelector(state=>state?.movies?.movies?.data?.commentList);
 
-	const [modal, setModal] = useState(
-		useSelector(state => state?.modal?.isOpen),
-	);
+	const [modal, setModal] = useState(false);
+	const [open,setOpen] = useState(false);
+
+	const handleSubmit = () =>{
+		setOpen(false)
+	}
+
+	const handleCancle = () =>{
+		setOpen(false)
+	}
+
+	const onClick = () =>{
+		if(token){
+			setOpen(!open)
+		}else{
+			setModal(!modal)
+		}
+	
+	}
 
 	const data = [
 		{
 			id: 0,
 			title: "주요정보",
 			content: (
-				<>
+				<>	
+					{open && <ModalContainer open={open} handleSubmit={handleSubmit} handleCancle={handleCancle}/>}
+					{modal===true ? <Bubble modal={modal}/> : null}
 					<div>
 						<InfoContent>
 							<StSum>{detailData?.data?.summary}</StSum>
@@ -113,7 +137,7 @@ const ContentData = ({ detailData }) => {
 										주인공이 되어 보세요.
 									</div>
 									<div>
-										<button onClick={() => dispatch(openModal(true))}>
+										<button onClick={onClick}>
 											<i></i>
 											관람평쓰기
 										</button>
@@ -123,7 +147,9 @@ const ContentData = ({ detailData }) => {
 						</ul>
 					</CommentWrap>
 					<StComment>
-
+						{comments?.map((comment)=>{
+							return <Comment comment={comment} key={comment.id}/>
+						})}
 					</StComment>
 				</>
 			),
@@ -201,6 +227,7 @@ export const StProfile = styled.div`
 export const StComment = styled.div`
 	width: 100%;
 	display: flex;
+	flex-direction: column;
 `;
 
 export const StSum = styled.div`
