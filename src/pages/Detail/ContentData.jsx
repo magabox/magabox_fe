@@ -20,7 +20,7 @@ const ContentData = ({ detailData }) => {
 	const comments = useSelector(
 		state => state?.movies?.movies?.data?.commentList,
 	);
-
+	console.log(comments);
 	const [modal, setModal] = useState(false);
 	const [open, setOpen] = useState(false);
 
