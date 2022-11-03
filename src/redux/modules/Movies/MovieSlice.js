@@ -6,16 +6,31 @@ const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
 const userRole = localStorage.getItem("user-role");
 
-
+export const __getMovie = createAsyncThunk(
+    "GET_COMMENT",
+    async (payload,thunkAPI)=>{
+        try{
+            const {data} = await axios.get(`${serverUrl}/movies/${payload}`,
+            {headers: {
+                Authorization: accessToken,
+                refreshToken,
+                userRole,
+                "Content-Type": "application/json",
+            }})
+            return thunkAPI.fulfillWithValue(data)
+        }catch(e){
+            return thunkAPI.rejectWithValue(e.code)
+        }
+    }
+)
 
 
 export const __AddComment = createAsyncThunk(
     "ADD_COMMENT",
     async (payload,thunkAPI)=>{
         try{
-         
-            const {id, rating, comment} = payload
-            const {data} = await axios.post(`${serverUrl}/comments/${id}`,{rating,comment},
+            const {id, rating, content} = payload
+            const {data} = await axios.post(`${serverUrl}/comments/${id}`,{rating, content},
             {headers: {
                 Authorization: accessToken,
                 refreshToken,
@@ -23,7 +38,7 @@ export const __AddComment = createAsyncThunk(
                 "Content-Type": "application/json",
             }}
             )
-            return thunkAPI.fulfillWithValue(payload)
+            return thunkAPI.fulfillWithValue(data)
         }catch(e){
             return thunkAPI.rejectWithValue(e.code)
         }
@@ -73,20 +88,23 @@ const __DeleteComment = createAsyncThunk(
 
 const initialState = {
     isLoading : false,
-    comments : []
+    movies : []
 }
 
 const commentSlice = createSlice({
-    name : "comment",
+    name : "movies",
     initialState,
     reducers : {},
     extraReducers : {
         [__AddComment.pending] : (state,action)=>{
             state.isLoading = true
+            console.log(state.movies)
         },
         [__AddComment.fulfilled] : (state,action)=>{
             state.isLoading = false
-            state.comments.push(action.payload)
+            state.movies.push(action.payload)
+            alert("정상적으로 댓글이 등록되었습니다")
+            
         },
         [__AddComment.rejected] : (state,action)=>{
             state.isLoading = false
@@ -95,7 +113,7 @@ const commentSlice = createSlice({
             state.isLoading = true
         },
         [__UpdateComment.fulfilled]:(state,action)=>{
-            const target = state.comments.findIndex((comment)=>{
+            const target = state.movies.commentList.findIndex((comment)=>{
                return comment.id === action.payload.id
             });
             state.comments.splice(target,1,action.payload)
@@ -109,10 +127,20 @@ const commentSlice = createSlice({
         },
         [__DeleteComment.fulfilled]:(state,action)=>{
             state.isLoading = false
-            const target = state.comments.filter((comment)=>{
+            const target = state.movies.commentList.filter((comment)=>{
                 return comment.id !== action.payload.id
             })
             state.comments = target;
+        },
+        [__getMovie.pending]:(state,action)=>{
+            state.isLoading = true
+        },
+        [__getMovie.fulfilled]:(state,action)=>{
+            state.isLoading = false
+            state.movies = action.payload
+        },
+        [__getMovie.rejected]:(state,action)=>{
+            state.isLoading = false
         }
     }
 })

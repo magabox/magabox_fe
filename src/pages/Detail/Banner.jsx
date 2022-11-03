@@ -81,7 +81,10 @@ const Banner = ({ detailData, heartData }) => {
 					</Info>
 					<Poster>
 						<div>
-							<img src={details?.imageUrl} alt="" />
+							<img
+								src={details?.imageUrl}
+								alt=""
+							/>
 						</div>
 					</Poster>
 					<Reserve>

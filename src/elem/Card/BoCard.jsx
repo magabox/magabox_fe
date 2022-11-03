@@ -15,19 +15,20 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __heart } from "../../redux/modules/heartSlice.js/heartSlice";
 import { useEffect } from "react";
-import { __getBoxOffice } from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import { __getBoxOffice, __getByMovieId } from "../../redux/modules/boxOffice/boxOfiiceSlice";
+import { useParams } from "react-router-dom/dist";
 import { loginAction } from "../../redux/modules/user/login";
+
 const BoCard = ({ card }) => {
 	const dispatch = useDispatch();
 	const { imageUrl, totalHeartCount, heartList } = card;
-	const { handleLoginDispatch } = loginAction;
-	const heartData = useSelector(state => state.heart.heartData);
-	const isLogin = useSelector(state => state.login.isLogin);
-	// console.log("card", card);
+	const heartData = useSelector(state => state.heart);
 	const userRole = localStorage.getItem("user-role");
 	const username = localStorage.getItem("user-name");
 	const filter = heartList.filter(heart => username === heart.username);
+    const isLogin = useSelector(state => state.login.isLogin);
 	const [ready, setReady] = useState(undefined);
+    const { handleLoginDispatch } = loginAction;
 	const sample = () => {
 		const loggedin = localStorage.getItem("isLogin");
 		if (loggedin) {

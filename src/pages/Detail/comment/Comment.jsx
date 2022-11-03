@@ -1,11 +1,21 @@
 import React from 'react'
+import { StProfile} from '../ContentData'
+import { StId } from '../ContentData'
+import Flex from '../../../elem/Flex/Flex'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 
-const Comment = () => {
+const user = localStorage.getItem("user-name")
+
+const Comment = ({comment}) => {
   return (
-    <>
-    						<StProfile style={{ marginTop: "30px" }}>
-							<img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png" />
-							<StId>{user?.replace(/.{2}$/, "**")}</StId>
+    <>			
+	
+					<Flex dir="row">
+						<StProfile style={{ marginTop: "30px" }}>
+						<img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png" />
+						<StId>{user?.replace(/.{2}$/, "**")}</StId>
 						</StProfile>
 						<Flex
 							wd="100%"
@@ -20,8 +30,9 @@ const Comment = () => {
 										<span
 											style={{
 												color: "#503396",
-												marginLeft: "15px",
-												paddinLeft: "20px",
+												marginLeft: "20px",
+												paddinnLeft: "10px",
+												width: "45px"
 											}}
 										>
 											관람평
@@ -29,15 +40,15 @@ const Comment = () => {
 									</Flex>
 									<Flex>
 										<span style={{ fontSize: "2.4em", color: "#503396" }}>
-											8
+											{comment.rating}
 										</span>
 									</Flex>
 									<Flex br="1px solid #c5c2c2ba" pd="20">
-										<span style={{ color: "#503396" }}>배우</span>
+										<span style={{ color: "#503396",width:"30px" }}>배우</span>
 									</Flex>
 								</Flex>
 								<Flex dir="row" wd="715px" jc="space-between" ai="center" mg="0 0 0 25px">
-									<span>재밌었어요!!</span>
+									<span>{comment.content}</span>
 									<Flex gap="15" dir="row">
 										<FontAwesomeIcon
 											icon={faThumbsUp}
@@ -52,6 +63,7 @@ const Comment = () => {
 									</Flex>
 								</Flex>
 							</Flex>
+						</Flex>
 						</Flex>
     
     </>
