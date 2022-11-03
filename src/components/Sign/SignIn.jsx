@@ -212,7 +212,7 @@ const StForm = styled.form`
 		border-top: 1px solid #eee;
 		border-bottom: 1px solid #eee;
 		label {
-			padding: 10px 0;
+			/* padding: 10px 0; */
 			display: inline-block;
 			text-align: center;
 			width: 130px;

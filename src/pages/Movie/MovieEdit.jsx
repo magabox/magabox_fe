@@ -142,12 +142,11 @@ const MovieAdmin = () => {
 								<span>분</span>
 							</div>
 						</TextUploadWrap>
-						<div>
-							<SubmitBtn type={"submit"} onClick={onClickHandler}>
-								수정하기
-							</SubmitBtn>
-						</div>
+						<div></div>
 					</StForm>
+					<SubmitBtn type={"submit"} onClick={onClickHandler}>
+						수정하기
+					</SubmitBtn>
 					<SubmitBtn
 						onClick={() => {
 							const result = window.confirm("이 게시글을 지울까요?");
@@ -179,7 +178,10 @@ const Title = styled.h1`
 	font-size: 30px;
 	margin-bottom: 20px;
 `;
-const UploadWrap = styled.div``;
+const UploadWrap = styled.div`
+	display: flex;
+	justify-content: center;
+`;
 
 const StForm = styled.form`
 	display: flex;
@@ -192,7 +194,7 @@ const StForm = styled.form`
 `;
 
 const TextLabel = styled.label`
-	padding: 10px 0;
+	/* padding: 10px 0; */
 	display: inline-block;
 	text-align: center;
 	width: 130px;

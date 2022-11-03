@@ -151,7 +151,7 @@ const StForm = styled.form`
 `;
 
 const TextLabel = styled.label`
-	padding: 10px 0;
+	/* padding: 10px 0; */
 	display: inline-block;
 	text-align: center;
 	width: 130px;
