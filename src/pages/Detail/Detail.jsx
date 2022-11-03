@@ -24,7 +24,6 @@ const Detail = () => {
 	const { id } = useParams();
 
 	const comments = useSelector(state=>state?.movies?.movies);
-	console.log(comments)
 
 	// const [modal,setModal] = useState(useSelector((state)=>state?.modal?.isOpen));
 
