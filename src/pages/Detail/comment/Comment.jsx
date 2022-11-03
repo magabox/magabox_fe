@@ -5,17 +5,25 @@ import Flex from '../../../elem/Flex/Flex'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { __DeleteComment } from '../../../redux/modules/Movies/MovieSlice'
 
 const user = localStorage.getItem("user-name")
 
 const Comment = ({comment}) => {
+
+	const dispatch = useDispatch();
+
+	const deleteComment = () =>{
+		dispatch(__DeleteComment(comment.id))
+	}
   return (
     <>			
 	
 					<Flex dir="row">
 						<StProfile style={{ marginTop: "30px" }}>
 						<img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png" />
-						<StId>{user?.replace(/.{2}$/, "**")}</StId>
+						<StId>{comment.username?.replace(/.{2}$/, "**")}</StId>
 						</StProfile>
 						<Flex
 							wd="100%"
@@ -50,6 +58,7 @@ const Comment = ({comment}) => {
 								<Flex dir="row" wd="715px" jc="space-between" ai="center" mg="0 0 0 25px">
 									<span>{comment.content}</span>
 									<Flex gap="15" dir="row">
+										<span onClick={deleteComment}>삭제</span>
 										<FontAwesomeIcon
 											icon={faThumbsUp}
 											size="lg"

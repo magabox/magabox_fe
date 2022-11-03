@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { serverUrl } from "../../api";
+import { current } from "@reduxjs/toolkit";
 
 const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
@@ -65,11 +66,11 @@ export const __UpdateComment = createAsyncThunk(
     }
 )
 
-const __DeleteComment = createAsyncThunk(
+export const __DeleteComment = createAsyncThunk(
     "DELETE_COMMENT",
     async (payload,thunkAPI)=>{
         try{
-            const {data} = await axios.delete(`${serverUrl}/comments/{commentId}`,
+            const {data} = await axios.delete(`${serverUrl}/comments/${payload}`,
             {headers : {
                 Authorization : accessToken,
                 refreshToken,
@@ -98,7 +99,7 @@ const commentSlice = createSlice({
     extraReducers : {
         [__AddComment.pending] : (state,action)=>{
             state.isLoading = true
-            console.log(state.movies)
+            console.log(current(state.movies))
         },
         [__AddComment.fulfilled] : (state,action)=>{
             state.isLoading = false
